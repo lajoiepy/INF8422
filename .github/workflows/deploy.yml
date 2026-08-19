@@ -1,0 +1,126 @@
+# Builde les decks Slidev et déploie le site du cours sur GitHub Pages.
+# Prérequis (une seule fois) : Settings → Pages → Source = "GitHub Actions".
+#
+# Les decks sont découverts automatiquement : tout dossier slides/<id>/
+# contenant un package.json ET un cours_*.md est buildé — publier un nouveau
+# cours ne demande aucune modification de ce fichier.
+#
+# ⚠️ Fichier généré depuis INF8422_internal/public-site/workflows/deploy.yml —
+# ne pas éditer ici, les modifications seraient écrasées au prochain sync.
+
+name: Deploy course website
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "slides/**"
+      - "pdf/**"
+      - "assets/**"
+      - "site.yaml"
+      - "index.html"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      decks: ${{ steps.list.outputs.decks }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: list
+        name: List Slidev decks
+        run: |
+          decks=$(for d in slides/*/; do
+            [ -f "$d/package.json" ] || continue
+            ls "$d"/cours_*.md >/dev/null 2>&1 || continue
+            basename "$d"
+          done | jq -R . | jq -sc .)
+          echo "Decks found: $decks"
+          echo "decks=$decks" >> "$GITHUB_OUTPUT"
+
+  build-decks:
+    needs: discover
+    if: needs.discover.outputs.decks != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        deck: ${{ fromJSON(needs.discover.outputs.decks) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: slides/${{ matrix.deck }}/package-lock.json
+      - name: Build deck
+        working-directory: slides/${{ matrix.deck }}
+        run: |
+          npm ci --omit=dev --no-audit --no-fund
+          md=$(ls cours_*.md | head -n1)
+          npx slidev build "$md" --base "/${{ github.event.repository.name }}/slides/${{ matrix.deck }}/"
+          # Slidev ne copie dans dist/ que public/ et les assets importés par
+          # Vite ; les médias référencés en chemin relatif brut dans les slides
+          # (./images/…, ./logo.png) doivent être copiés à la main.
+          find . \( -path ./node_modules -o -path ./dist -o -path ./public \) -prune -o \
+            -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.svg' \
+                       -o -iname '*.gif' -o -iname '*.webp' -o -iname '*.avif' \
+                       -o -iname '*.mp4' -o -iname '*.webm' \) -print | while read -r f; do
+            mkdir -p "dist/$(dirname "$f")"
+            cp "$f" "dist/$f"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: deck-${{ matrix.deck }}
+          path: slides/${{ matrix.deck }}/dist
+          retention-days: 1
+
+  assemble:
+    needs: build-decks
+    if: always() && needs.build-decks.result != 'failure'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: deck-*
+          path: _decks
+        continue-on-error: true
+      - name: Assemble site
+        run: |
+          mkdir -p _site/slides _site/pdf
+          cp index.html site.yaml _site/
+          cp -R assets _site/assets
+          # download-artifact crée _decks/deck-<id>/ → slides/<id>/
+          for d in _decks/deck-*; do
+            [ -d "$d" ] || continue
+            cp -R "$d" "_site/slides/$(basename "$d" | sed 's/^deck-//')"
+          done
+          if [ -d pdf ]; then cp -R pdf/. _site/pdf/; fi
+          echo "== Contenu du site =="
+          find _site -maxdepth 2 | sort
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: assemble
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,203 @@
+:root {
+  --accent: #cf1c24;          /* rouge PolyMTL (UniRed de py_slides.sty) */
+  --accent-dark: #a5161c;
+  --text: #24292f;
+  --text-muted: #6b7280;
+  --bg: #ffffff;
+  --bg-alt: #f6f7f9;
+  --border: #e3e5e8;
+  --link: #0b5cad;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: #f0555c;
+    --accent-dark: #cf1c24;
+    --text: #e6e8eb;
+    --text-muted: #9aa1a9;
+    --bg: #16181c;
+    --bg-alt: #1e2126;
+    --border: #33373d;
+    --link: #6cb2f5;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.55;
+}
+
+.site-header {
+  background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+  color: #fff;
+  padding: 2.2rem 1.5rem;
+}
+
+.header-inner {
+  max-width: 52rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.course-code {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  opacity: 0.85;
+}
+
+.site-header h1 {
+  margin: 0.2rem 0 0.4rem;
+  font-size: clamp(1.4rem, 3.5vw, 2.1rem);
+  line-height: 1.2;
+}
+
+.course-meta {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Bouton FR/EN — unique commande de langue, en haut à droite du bandeau. */
+.lang-toggle {
+  flex-shrink: 0;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.lang-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+main {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+h2 {
+  margin: 0.5rem 0 0.2rem;
+  font-size: 1.4rem;
+}
+
+.topics-note {
+  margin: 0 0 1.2rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.topics {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.topic {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.topic:last-child { border-bottom: none; }
+
+.topic:hover { background: var(--bg-alt); }
+
+.topic-num {
+  flex-shrink: 0;
+  min-width: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.topic-title {
+  flex: 1;
+  font-weight: 600;
+}
+
+.topic-links {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.topic-empty {
+  color: var(--text-muted);
+  font-style: italic;
+  justify-content: center;
+}
+
+.slide-link {
+  display: inline-block;
+  color: var(--link);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.1rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-left: 0.35rem;
+}
+
+.slide-link:hover { border-color: var(--link); }
+
+/* Étiquette « fr » sur un lien qui retombe sur la version française faute de
+   version anglaise. */
+.lang-tag {
+  margin-left: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+}
+
+.badge-soon {
+  background: var(--bg-alt);
+  color: var(--text-muted);
+  border: 1px dashed var(--border);
+}
+
+.site-footer {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 2rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 32rem) {
+  .topic {
+    flex-wrap: wrap;
+    row-gap: 0.4rem;
+  }
+  .topic-links { margin-left: 2.5rem; }
+  .slide-link:first-child { margin-left: 0; }
+}

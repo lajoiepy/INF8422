@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>INF8422</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>" />
+</head>
+<body>
+  <!-- Aucun texte visible n'est écrit en dur ici : tout vient de assets/app.js
+       (libellés d'interface) ou de site.yaml (contenu), pour que le bouton
+       FR/EN puisse tout basculer. -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-text">
+        <p class="course-code" id="site-code"></p>
+        <h1 id="site-title"></h1>
+        <p class="course-meta">
+          <span id="site-instructor"></span> ·
+          <span id="site-institution"></span> ·
+          <span id="site-term"></span>
+        </p>
+      </div>
+      <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language / Changer de langue"></button>
+    </div>
+  </header>
+
+  <main>
+    <h2 id="topics-heading"></h2>
+    <p class="topics-note" id="topics-note"></p>
+    <ul class="topics" id="topics-list"></ul>
+  </main>
+
+  <footer class="site-footer">
+    <p id="footer-text"></p>
+  </footer>
+
+  <script src="assets/js-yaml.min.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

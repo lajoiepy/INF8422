@@ -1,0 +1,17 @@
+{
+  "name": "inf8422-cours1-introduction",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev cours_introduction.md --open",
+    "build": "slidev build cours_introduction.md",
+    "export": "slidev export cours_introduction.md"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.16.0",
+    "@slidev/theme-default": "latest"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.53.0"
+  }
+}

@@ -1,0 +1,36 @@
+# =============================================================================
+# Configuration du site public INF8422 — C'EST LE SEUL FICHIER À ÉDITER.
+#
+# - L'ordre des entrées de `topics` = l'ordre d'affichage sur la page.
+# - `deck: "<id>"` → les slides Slidev servies à slides/<id>/
+# - `pdf: "<fichier>"` → le PDF servi à pdf/<fichier>
+#   Ces deux champs sont remplis automatiquement par scripts/add-deck.sh ;
+#   le titre, lui, est à ajuster à la main (surtout l'anglais).
+# - `deck` et `pdf` sont bilingues eux aussi. Une chaîne simple sert le même
+#   fichier dans les deux langues ; { fr: "1", en: "1_en" } sert la version
+#   anglaise quand elle existe (publiée par `add-deck.sh 1_en --lang en`).
+#   Sans version anglaise, le lien retombe sur le français, marqué « fr ».
+# - Une entrée sans `deck` ni `pdf` s'affiche avec un badge « À venir /
+#   Coming soon » — pratique pour publier le plan du cours à l'avance.
+# - Tous les textes visibles sont bilingues : { fr: "...", en: "..." }.
+#
+# Après édition : ./scripts/sync-site.sh pour pousser vers le dépôt public.
+# =============================================================================
+
+site:
+  code: INF8422
+  title:
+    fr: "Perception Robotique et Intelligence Spatiale"
+    en: "Robotic Perception and Spatial Intelligence"
+  instructor: "Prof. Pierre-Yves Lajoie"
+  institution:
+    fr: "Polytechnique Montréal"
+    en: "Polytechnique Montréal"
+  term:
+    fr: "Automne 2026"
+    en: "Fall 2026"
+
+topics:
+  - title: { fr: "Introduction", en: "Introduction" }
+    deck: "1"
+    pdf: "1.pdf"

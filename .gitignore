@@ -1,0 +1,5 @@
+# Dépôt généré : rien ici ne s'édite à la main (voir README.md).
+node_modules/
+dist/
+_site/
+.DS_Store
