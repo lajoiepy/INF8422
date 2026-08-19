@@ -8,7 +8,7 @@
     "export": "slidev export cours_introduction.md"
   },
   "dependencies": {
-    "@slidev/cli": "^52.16.0",
+    "@slidev/cli": "^52.19.0",
     "@slidev/theme-default": "latest"
   },
   "devDependencies": {
