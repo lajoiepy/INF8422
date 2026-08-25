@@ -7,13 +7,13 @@
 const UI = {
   fr: {
     topicsHeading: "Sujets du cours",
-    topicsNote: "Les diapositives sont publiées au fur et à mesure de la session.",
+    topicsNote: "",
     empty: "Aucun sujet publié pour l'instant.",
     slides: "Diapositives",
     pdf: "PDF",
     comingSoon: "À venir",
     frenchOnly: "Version française seulement",
-    footer: "Diapositives générées avec Slidev · Site hébergé sur GitHub Pages",
+    footer: "",
     toggleLabel: "English",
     htmlLang: "fr",
     loadError: "Erreur de chargement de site.yaml",
