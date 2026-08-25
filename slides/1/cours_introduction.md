@@ -169,7 +169,7 @@ hideInToc: true
 
 - Équipe de **2 à 3 personnes**.
 - Rapport de **4 à 6 pages**, double colonne, format **IEEE**.
-- Une liste de suggestions de sujets est disponible sur **Moodle**.
+- Un guide pour le projet est disponible sur **Moodle**.
 - Critères: Rigueur scientifique, expérimentations, interprétation des résultats.
 
 </InfoBlock>
@@ -248,7 +248,6 @@ Positif:
 Négatif:
 - Vous n'avez pas le choix de les utiliser et ça limite les apprentissages.
 
-C'est notre solution pour le **projet de session**.
 
 </AlertBlock>
 
@@ -257,15 +256,15 @@ C'est notre solution pour le **projet de session**.
 
 <InfoBlock title="Solution 2 - Rendre les travaux plus faciles">
 
+Proposée dans *Manifeste pour l'éducation humaine*, J. Pilon, 2026
+
 Positif:
 - Peut se faire sans l'IA
 - Maximise l'apprentissage
 
 Négatif:
-- Peut être résoud par l'IA
-- Difficile à évaluer
+- Peut être résoud par l'IA et difficile à évaluer
 
-C'est notre solution pour les **travaux pratiques**.
 </InfoBlock>
 
 </div>
@@ -286,7 +285,7 @@ hideInToc: true
 
 **Projet de session:**
 
-Vous pouvez utiliser l'IA et faire un projet le plus ambitieux possibles.
+Vous pouvez utiliser l'IA si vous voulez et faire un projet le plus ambitieux possible.
 
 **Ceci dit**, si vous souhaitez *ne pas utiliser l'IA* pour le projet, veuillez nous l'indiquer, on va moduler nos attentes en conséquences.
 
@@ -303,7 +302,7 @@ En contrepartie:
 - Support de l'équipe enseignante
 - Ajustements si le TP est trop difficile ou trop long
 
-**Avant de vous résoudre à utiliser l'IA pour résoudre le TP, venez nous voir.**
+**Avant d'utiliser l'IA pour résoudre le TP, venez nous voir et demander de l'aide.**
 
 On pourra vous expliquer, vous aider, et ajuster si nécessaire.
 
@@ -639,7 +638,7 @@ hideInToc: true
 <ExampleBlock title="Applications types">
 
 - Inspection d'infrastructures.
-- Recherche et sauvetage (SAR).
+- Recherche et sauvetage.
 - Exploration d'environnements inconnus.
 - Agriculture de précision.
 
@@ -805,10 +804,210 @@ hideInToc: true
 Comment décrire l'orientation du repère $r$ (robot) par rapport à $w$ (monde) ?
 
 
-1. **Matrice de Rotation** (Rotation Matrix)
-2. **Angles d'Euler** (Roll-Pitch-Yaw)
-3. **Axe-Angle** (Axis-Angle)
-4. **Quaternions**
+1. **Angles d'Euler** (Roll-Pitch-Yaw)
+2. **Axe-Angle** (Axis-Angle)
+3. **Quaternions**
+4. **Matrice de Rotation** (Rotation Matrix)
+
+---
+layout: two-cols-header
+hideInToc: true
+---
+
+<style>
+.two-cols-header {
+  grid-template-columns: 7fr 15fr;
+}
+</style>
+# 1. Angles d'Euler (Roll-Pitch-Yaw)
+
+Une rotation RPY exige de préciser l'ordre des axes.
+
+::left::
+
+**Convention extrinsèque XYZ (axes fixes) :**
+
+$$R = R_z(\gamma) \, R_y(\beta) \, R_x(\alpha)$$
+
+$\alpha$ : roll autour de $x$; $\beta$ : pitch autour de $y$; $\gamma$ : yaw autour de $z$.
+
+<InfoBlock title="Avantages">
+
+Intuitif. Minimal (3 paramètres).
+
+</InfoBlock>
+
+::right::
+
+<img src="./elem_rot.png" class="mx-auto mt-4 w-4/5" />
+
+---
+layout: two-cols-header
+hideInToc: true
+---
+
+# Angles d'Euler — Limitations
+
+::left::
+
+<AlertBlock title="Gimbal Lock (Singularité)">
+
+Si le pitch $\beta = \pm\pi/2$, on perd un degré de liberté : deux axes de rotation deviennent colinéaires.
+
+</AlertBlock>
+
+**Autres inconvénients :**
+- Calculs trigonométriques coûteux pour la composition et l'inverse.
+- Plusieurs conventions possibles (RPY, YPR, XYZ, ZYX...) → sources de confusion fréquentes.
+
+::right::
+
+<img src="./gimbal-lock.png" class="mx-auto mt-4 w-4/5" />
+
+---
+hideInToc: true
+---
+
+# 2. Représentation Axe-Angle
+
+Théorème d'Euler : toute rotation est équivalente à une rotation d'angle $\theta$ autour d'un axe fixe $\mathbf{u}$ ($\|\mathbf{u}\|=1$).
+
+Le **vecteur de rotation** $\boldsymbol{\omega}=\theta\mathbf{u}\in\mathbb{R}^3$ contient les trois paramètres indépendants.
+
+**Formule de Rodrigues (Axe-Angle $\to$ Matrice) :**
+
+$$R_r^w = \cos(\theta)\,\mathbf{I}_3 + \sin(\theta)[\mathbf{u}]_\times + (1-\cos(\theta))\,\mathbf{u}\mathbf{u}^T$$
+
+Où $[\mathbf{u}]_\times$ est la matrice antisymétrique (*skew-symmetric*) telle que $[\mathbf{u}]_\times v = \mathbf{u} \times v$ :
+
+$$[\mathbf{u}]_\times = \begin{bmatrix} 0 & -u_z & u_y \\ u_z & 0 & -u_x \\ -u_y & u_x & 0 \end{bmatrix}$$
+
+---
+hideInToc: true
+---
+
+# Conversion Matrice $\to$ Axe-Angle
+
+Comment retrouver $(\mathbf{u}, \theta)$ à partir d'une matrice $R$ ?
+
+<div class="grid grid-cols-2 gap-12 mt-3">
+<div>
+
+**Angle $\theta$ :** via la trace de la matrice :
+
+$$\text{tr}(R) = 1 + 2\cos(\theta) \implies \theta = \arccos\!\left(\frac{\text{tr}(R)-1}{2}\right)$$
+
+**Axe $\mathbf{u}$ :** vecteur propre associé à la valeur propre $\lambda = 1$ :
+
+$$R\,\mathbf{u} = \mathbf{u}$$
+
+L'axe de rotation est invariant par la rotation.
+
+</div>
+<div>
+
+<InfoBlock title="Valeurs propres de R">
+
+Les valeurs propres de toute matrice de rotation sont :
+
+$$\{1,\ e^{i\theta},\ e^{-i\theta}\}$$
+
+</InfoBlock>
+
+
+</div>
+</div>
+
+---
+hideInToc: true
+---
+
+# 3. Quaternions
+
+Extension des nombres complexes : $q = q_4 + i\,q_1 + j\,q_2 + k\,q_3$ avec $i^2 = j^2 = k^2 = ijk = -1$, $\;ij = -ji = k$, $\;jk = -kj = i$, $\;ki = -ik = j$.
+
+<div class="grid grid-cols-2 gap-6 mt-3">
+<div>
+
+**Convention :** $q = \begin{bmatrix} v \\ w \end{bmatrix} = \begin{bmatrix} q_1 \\ q_2 \\ q_3 \\ q_4 \end{bmatrix}$,
+
+avec $v$ la partie vectorielle et $w$ la partie scalaire.
+
+</div>
+<div>
+
+**Lien avec Axe-Angle $(\mathbf{u}, \theta)$ :**
+
+$$q = \begin{bmatrix} \mathbf{u}\sin(\theta/2) \\ \cos(\theta/2) \end{bmatrix}$$
+
+</div>
+</div>
+
+**Lien avec la matrice de rotation $R(q)$ :**
+
+$$R(q) = \begin{bmatrix} q_1^2-q_2^2-q_3^2+q_4^2 & 2(q_1q_2 - q_3q_4) & 2(q_1q_3 + q_2q_4) \\ 2(q_1q_2 + q_3q_4) & -q_1^2+q_2^2-q_3^2+q_4^2 & 2(q_2q_3 - q_1q_4) \\ 2(q_1q_3 - q_2q_4) & 2(q_2q_3 + q_1q_4) & -q_1^2-q_2^2+q_3^2+q_4^2 \end{bmatrix}$$
+
+
+---
+hideInToc: true
+---
+
+# Opérations sur les Quaternions Unitaires
+
+Pour représenter une rotation : quaternions unitaires ($\|q\| = 1$), avec $q=\begin{bmatrix}v\\w\end{bmatrix}$.
+
+<div class="grid grid-cols-2 gap-6 mt-4">
+<div>
+
+**Composition (Produit) :**
+
+$$q_a \otimes q_b = \begin{bmatrix} w_a v_b + w_b v_a + v_a \times v_b \\ w_a w_b - v_a^T v_b \end{bmatrix}$$
+
+**Inverse :**
+
+$$q^{-1} = \begin{bmatrix} -q_{1:3} \\ q_4 \end{bmatrix}$$
+
+</div>
+<div>
+
+**Expression d'un point dans un repère différent :**
+
+$$q_r^w \otimes \begin{bmatrix} p^r \\ 0 \end{bmatrix} \otimes (q_r^w)^{-1} = \begin{bmatrix} p^w \\ 0 \end{bmatrix} = \begin{bmatrix} R(q_r^w)\,p^r \\ 0 \end{bmatrix}$$
+
+</div>
+</div>
+
+---
+hideInToc: true
+---
+
+# Avantages des Quaternions
+
+<div class="grid grid-cols-2 gap-6 mt-4">
+<div>
+
+<InfoBlock title="Avantages">
+
+- **Sans singularité** — pas de Gimbal Lock.
+- **Compact** — 4 scalaires et une contrainte de normalisation, donc 3 degrés de liberté.
+- **Calculs efficaces** — la composition ne requiert pas de trigonométrie : 16 multiplications vs 27 pour les matrices.
+- **Génération** — il suffit de générer 4 nombre réel et de normaliser pour obtenir un quaternion valide.
+
+</InfoBlock>
+
+</div>
+<div>
+
+<AlertBlock title="Inconvénient : Double Couverture">
+
+$q$ et $-q$ représentent la **même rotation**.
+
+Cela cause des problèmes pour les interpolations et l'optimisation (discontinuités).
+
+</AlertBlock>
+
+</div>
+</div>
 
 
 ---
@@ -816,7 +1015,7 @@ layout: two-cols-header
 hideInToc: true
 ---
 
-# 1. Matrice de Rotation
+# 4. Matrice de Rotation
 
 On projette les axes de $r$ ($x_r, y_r, z_r$) dans le repère $w$ et on empile ces vecteurs en colonnes.
 
@@ -899,207 +1098,6 @@ $$R_r^w = (R_w^r)^{-1} = (R_w^r)^T$$
 
 <img src="./point_rot.png" class="mx-auto mt-6 w-4/5" />
 
----
-layout: two-cols-header
-hideInToc: true
----
-
-<style>
-.two-cols-header {
-  grid-template-columns: 7fr 15fr;
-}
-</style>
-# 2. Angles d'Euler (Roll-Pitch-Yaw)
-
-Une rotation RPY exige de préciser l'ordre des axes et la convention intrinsèque ou extrinsèque.
-
-::left::
-
-**Convention extrinsèque XYZ (axes fixes) :**
-
-$$R = R_z(\gamma) \, R_y(\beta) \, R_x(\alpha)$$
-
-Équivalente à une séquence intrinsèque ZYX (axes mobiles).
-
-$\alpha$ : roll autour de $x$; $\beta$ : pitch autour de $y$; $\gamma$ : yaw autour de $z$.
-
-<InfoBlock title="Avantages">
-
-Intuitif. Minimal (3 paramètres).
-
-</InfoBlock>
-
-::right::
-
-<img src="./elem_rot.png" class="mx-auto mt-4 w-4/5" />
-
----
-layout: two-cols-header
-hideInToc: true
----
-
-# Angles d'Euler — Limitations
-
-::left::
-
-<AlertBlock title="Gimbal Lock (Singularité)">
-
-Si le pitch $\beta = \pm\pi/2$, on perd un degré de liberté : deux axes de rotation deviennent colinéaires.
-
-</AlertBlock>
-
-**Autres inconvénients :**
-- Calculs trigonométriques coûteux pour la composition et l'inverse.
-- Plusieurs conventions possibles (RPY, YPR, XYZ, ZYX...) → sources de confusion fréquentes.
-
-::right::
-
-<img src="./gimbal-lock.png" class="mx-auto mt-4 w-4/5" />
-
----
-hideInToc: true
----
-
-# 3. Représentation Axe-Angle
-
-Théorème d'Euler : toute rotation est équivalente à une rotation d'angle $\theta$ autour d'un axe fixe $\mathbf{u}$ ($\|\mathbf{u}\|=1$).
-
-Le **vecteur de rotation** $\boldsymbol{\omega}=\theta\mathbf{u}\in\mathbb{R}^3$ contient les trois paramètres indépendants.
-
-**Formule de Rodrigues (Axe-Angle $\to$ Matrice) :**
-
-$$R_r^w = \cos(\theta)\,\mathbf{I}_3 + \sin(\theta)[\mathbf{u}]_\times + (1-\cos(\theta))\,\mathbf{u}\mathbf{u}^T$$
-
-Où $[\mathbf{u}]_\times$ est la matrice antisymétrique (*skew-symmetric*) telle que $[\mathbf{u}]_\times v = \mathbf{u} \times v$ :
-
-$$[\mathbf{u}]_\times = \begin{bmatrix} 0 & -u_z & u_y \\ u_z & 0 & -u_x \\ -u_y & u_x & 0 \end{bmatrix}$$
-
----
-hideInToc: true
----
-
-# Conversion Matrice $\to$ Axe-Angle
-
-Comment retrouver $(\mathbf{u}, \theta)$ à partir d'une matrice $R$ ?
-
-<div class="grid grid-cols-2 gap-12 mt-3">
-<div>
-
-**Angle $\theta$ :** via la trace de la matrice :
-
-$$\text{tr}(R) = 1 + 2\cos(\theta) \implies \theta = \arccos\!\left(\frac{\text{tr}(R)-1}{2}\right)$$
-
-**Axe $\mathbf{u}$ :** vecteur propre associé à la valeur propre $\lambda = 1$ :
-
-$$R\,\mathbf{u} = \mathbf{u}$$
-
-L'axe de rotation est invariant par la rotation.
-
-</div>
-<div>
-
-<InfoBlock title="Valeurs propres de R">
-
-Les valeurs propres de toute matrice de rotation sont :
-
-$$\{1,\ e^{i\theta},\ e^{-i\theta}\}$$
-
-</InfoBlock>
-
-
-</div>
-</div>
-
----
-hideInToc: true
----
-
-# 4. Quaternions
-
-Extension des nombres complexes : $q = q_4 + i\,q_1 + j\,q_2 + k\,q_3$ avec $i^2 = j^2 = k^2 = ijk = -1$, $\;ij = -ji = k$, $\;jk = -kj = i$, $\;ki = -ik = j$.
-
-<div class="grid grid-cols-2 gap-6 mt-3">
-<div>
-
-**Convention :** $q = \begin{bmatrix} v \\ w \end{bmatrix} = \begin{bmatrix} q_1 \\ q_2 \\ q_3 \\ q_4 \end{bmatrix}$,
-
-avec $v$ la partie vectorielle et $w$ la partie scalaire.
-
-</div>
-<div>
-
-**Lien avec Axe-Angle $(\mathbf{u}, \theta)$ :**
-
-$$q = \begin{bmatrix} \mathbf{u}\sin(\theta/2) \\ \cos(\theta/2) \end{bmatrix}$$
-
-</div>
-</div>
-
-**Lien avec la matrice de rotation $R(q)$ :**
-
-$$R(q) = \begin{bmatrix} q_1^2-q_2^2-q_3^2+q_4^2 & 2(q_1q_2 - q_3q_4) & 2(q_1q_3 + q_2q_4) \\ 2(q_1q_2 + q_3q_4) & -q_1^2+q_2^2-q_3^2+q_4^2 & 2(q_2q_3 - q_1q_4) \\ 2(q_1q_3 - q_2q_4) & 2(q_2q_3 + q_1q_4) & -q_1^2-q_2^2+q_3^2+q_4^2 \end{bmatrix}$$
-
-
----
-hideInToc: true
----
-
-# Opérations sur les Quaternions Unitaires
-
-Pour représenter une rotation : quaternions unitaires ($\|q\| = 1$), avec $q=\begin{bmatrix}v\\w\end{bmatrix}$.
-
-<div class="grid grid-cols-2 gap-6 mt-4">
-<div>
-
-**Composition (Produit) :**
-
-$$q_a \otimes q_b = \begin{bmatrix} w_a v_b + w_b v_a + v_a \times v_b \\ w_a w_b - v_a^T v_b \end{bmatrix}$$
-
-**Inverse :**
-
-$$q^{-1} = \begin{bmatrix} -q_{1:3} \\ q_4 \end{bmatrix}$$
-
-</div>
-<div>
-
-**Expression d'un point dans un repère différent :**
-
-$$q_r^w \otimes \begin{bmatrix} p^r \\ 0 \end{bmatrix} \otimes (q_r^w)^{-1} = \begin{bmatrix} p^w \\ 0 \end{bmatrix} = \begin{bmatrix} R(q_r^w)\,p^r \\ 0 \end{bmatrix}$$
-
-</div>
-</div>
-
----
-hideInToc: true
----
-
-# Avantages des Quaternions
-
-<div class="grid grid-cols-2 gap-6 mt-4">
-<div>
-
-<InfoBlock title="Avantages">
-
-- **Sans singularité** — pas de Gimbal Lock.
-- **Compact** — 4 scalaires et une contrainte d'unité, donc 3 degrés de liberté.
-- **Calculs efficaces** — la composition ne requiert pas de trigonométrie : 16 multiplications vs 27 pour les matrices.
-- **Interpolation** — SLERP (Spherical Linear Interpolation) naturelle.
-
-</InfoBlock>
-
-</div>
-<div>
-
-<AlertBlock title="Inconvénient : Double Couverture">
-
-$q$ et $-q$ représentent la **même rotation**.
-
-Cela cause des problèmes pour les interpolations et l'optimisation (discontinuités).
-
-</AlertBlock>
-
-</div>
-</div>
 
 ---
 layout: section
@@ -1192,14 +1190,14 @@ hideInToc: true
 | Matrice de Rotation | 9 (6) | Non | Opérations sur les vecteurs |
 | Angles d'Euler (RPY) | 3 | **Oui** | Affichage intuitif |
 | Axe-Angle | 3 ($\boldsymbol{\omega}$) | **Oui, à $\theta=0$** | Calculs, conversions |
-| Quaternion | 4 (1) | Non | Stockage, interpolation |
+| Quaternion | 4 (1) | Non | Stockage, génération |
 
 </div>
 
 <div class="mt-3">
 <InfoBlock title="En général pour">
 
-- **Stocker / interpoler** → Quaternion
+- **Stocker / générer** → Quaternion
 - **Calculer / appliquer** → Matrice de Rotation ou Axe-Angle
 - **Communiquer à un humain** → Angles d'Euler
 
@@ -1343,6 +1341,15 @@ $$p_{\text{corrigé}} = T_{\text{ref}}^{-1} \cdot T(t_i) \cdot p_{\text{brut}}$$
 
 <small>Nécessite de connaître la vitesse du robot à haute fréquence (IMU) pour interpoler $T(t_i)$.</small>
 
+
+---
+class: act1
+hideInToc: true
+---
+
+# A scan is not a snapshot
+
+<LidarScanAnimation class="mt-1" />
 
 ---
 layout: section
@@ -1539,12 +1546,6 @@ L'arbre a $\log_2 n$ niveaux de profondeur. À chaque niveau, on partitionne **t
 
 $$\underbrace{\log n}_{\text{niveaux}} \times \underbrace{O(n)}_{\text{médiane}} = O(n \log n)$$
 
-| Méthode | Complexité |
-|---------|-----------|
-| Points non-triés | $O(n \log^2 n)$ |
-| Points pré-triés par axe | $O(n \log n)$ |
-| Médiane approx. en $O(n)$ | $O(n \log n)$ |
-
 </div>
 <div>
 
@@ -1612,8 +1613,8 @@ $$\underbrace{\log n}_{\text{décisions}} \times O(1) = O(\log n)$$
 | Opération | Complexité |
 |-----------|-----------|
 | 1 correspondance | $O(\log n)$ moy. |
-| $n$ correspondances | $O(n \log n)$ moy. |
 | Pire cas (dim. élevée) | $O(n)$ |
+| $n$ correspondances | $O(n \log n)$ moy. |
 
 </div>
 <div>
@@ -1658,7 +1659,7 @@ hideInToc: true
 </div>
 <div>
 
-**Amélioration possible :**
+**Approximation :**
 
 Peut être construit en $O(n \log n)$ en utilisant un algorithme **approximatif** en $O(n)$ pour trouver les médianes (algorithme de sélection linéaire). Nécessite de rééquilibrer l'arbre périodiquement si les données changent.
 
@@ -1670,6 +1671,26 @@ Les bibliothèques comme **FLANN** ou **nanoflann** utilisent des variantes appr
 
 </div>
 </div>
+
+---
+hideInToc: true
+---
+
+# L'Algorithme ICP Standard
+
+**Entrée :** $P$ (Source), $Q$ (Cible), estimation initiale $(R_0, t_0)$.
+
+1. **Association de données :** Pour chaque point $p_i \in P$, trouver le point le plus proche $q_j \in Q$ (Nearest Neighbor).
+
+2. **Estimation :** Trouver $(R, t)$ qui minimisent l'erreur pour ces paires :
+   $$(R^*, t^*) = \underset{R,t}{\text{argmin}} \sum \| q_j - (R p_i + t) \|^2$$
+
+3. **Transformation :** Appliquer $P \leftarrow R^* P + t^*$.
+
+4. **Convergence :** Si le changement d'erreur $< \epsilon$, arrêter. Sinon retour à 1.
+
+<small>*Note : L'étape 1 (Nearest Neighbor) est coûteuse → structures KD-Tree.*</small>
+
 
 ---
 hideInToc: true
@@ -1711,7 +1732,6 @@ $$W = U D V^T$$
 
 $$R = U V^T$$
 
-<small>Attention : Si $\det(R) = -1$ (réflexion), on doit corriger $V$.</small>
 
 ---
 layout: two-cols-header
@@ -1745,7 +1765,7 @@ flowchart LR
     style B fill:#fef3c7,stroke:#f59e0b
 ```
 
-<AlertBlock title="Le Secret">
+<AlertBlock title="">
 
 Comme on cherche une transformation **rigide** (pas de déformation), on ignore l'étirement $D$ :
 
@@ -1758,6 +1778,8 @@ hideInToc: true
 ---
 
 # Résolution par SVD : Translation
+
+<div></div>
 
 Une fois la rotation optimale $R$ connue, la translation est la différence entre les centres de masse, corrigée par la rotation.
 
@@ -1785,6 +1807,8 @@ hideInToc: true
 ---
 
 # Variante importante : Point-to-Plane
+
+<div></div>
 
 La métrique "Point-to-Point" converge lentement dans les environnements avec des ambiguïtés géométriques (ex : couloirs).
 

@@ -1,0 +1,138 @@
+/* PolyMTL Brand Colors */
+:root {
+  --poly-red: #CF1C24;
+  --poly-orange: #F15A22;
+  --poly-green: #25B34B;
+  --poly-blue: #00BDF2;
+  --poly-grey: #333333;
+  --slidev-theme-primary: #CF1C24;
+}
+
+/* Slide heading color */
+.slidev-layout h1 {
+  color: var(--poly-red);
+  border-bottom: 2px solid var(--poly-red);
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Cover slide */
+.slidev-layout.cover h1 {
+  border-bottom: none;
+  font-size: 2.5rem;
+}
+
+/* Section slide */
+.slidev-layout.section h1 {
+  border-bottom: none;
+  font-size: 2.5rem;
+}
+
+/* Info block (equivalent to \begin{block}) */
+.info-block {
+  background: rgba(0, 189, 242, 0.08);
+  border-left: 4px solid var(--poly-blue);
+  border-radius: 0 4px 4px 0;
+  padding: 0.5rem 0.75rem;
+  margin: 0.4rem 0;
+}
+.info-block .block-title {
+  font-weight: bold;
+  color: var(--poly-blue);
+  margin-bottom: 0.2rem;
+  font-size: 0.95em;
+}
+
+/* Alert block (equivalent to \begin{alertblock}) */
+.alert-block {
+  background: rgba(241, 90, 34, 0.08);
+  border-left: 4px solid var(--poly-orange);
+  border-radius: 0 4px 4px 0;
+  padding: 0.5rem 0.75rem;
+  margin: 0.4rem 0;
+}
+.alert-block .block-title {
+  font-weight: bold;
+  color: var(--poly-orange);
+  margin-bottom: 0.2rem;
+  font-size: 0.95em;
+}
+
+/* Example block (equivalent to \begin{exampleblock}) */
+.example-block {
+  background: rgba(37, 179, 75, 0.08);
+  border-left: 4px solid var(--poly-green);
+  border-radius: 0 4px 4px 0;
+  padding: 0.5rem 0.75rem;
+  margin: 0.4rem 0;
+}
+.example-block .block-title {
+  font-weight: bold;
+  color: var(--poly-green);
+  margin-bottom: 0.2rem;
+  font-size: 0.95em;
+}
+
+/* Footer */
+.poly-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--poly-grey);
+  color: white;
+  padding: 3px 14px;
+  font-size: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.poly-footer .footer-section {
+  font-weight: bold;
+  flex: 1;
+}
+.poly-footer .footer-right {
+  text-align: right;
+}
+
+/* Cover footer — 4-color bar */
+.cover-footer-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  display: flex;
+}
+.cover-footer-bar span {
+  flex: 1;
+}
+
+/* Tighten list spacing */
+.slidev-layout ul, .slidev-layout ol {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.slidev-layout li {
+  margin-bottom: 0.1rem;
+}
+
+/* Nested list */
+.slidev-layout ul ul, .slidev-layout ol ol {
+  margin-left: 1rem;
+}
+
+/* Interactive geometry demos: keep long titles and SVG labels presentation-safe. */
+.slidev-layout.geometry-demo h1 {
+  font-size: 1.7rem;
+  line-height: 1.15;
+  margin-bottom: 0.35rem;
+}
+.geometry-svg text { font-size: 12px !important; }
+.geometry-svg text[font-size="10"] { font-size: 10px !important; }
+.geometry-svg text[font-size="11"] { font-size: 11px !important; }
+.geometry-svg text[font-size="12"] { font-size: 12px !important; }
+.geometry-svg text[font-size="13"] { font-size: 13px !important; }
+.geometry-svg text[font-size="14"] { font-size: 14px !important; }
+.geometry-svg text[font-size="15"] { font-size: 15px !important; }
+.geometry-svg text[font-size="21"] { font-size: 21px !important; }

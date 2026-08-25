@@ -32,5 +32,5 @@ site:
 
 topics:
   - title: { fr: "Introduction", en: "Introduction" }
-    deck: "1"
-    pdf: "1.pdf"
+    deck: { fr: "1", en: "1_en" }
+    pdf: { fr: "1.pdf", en: "1_en.pdf" }
