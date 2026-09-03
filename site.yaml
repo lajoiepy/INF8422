@@ -34,3 +34,6 @@ topics:
   - title: { fr: "Introduction", en: "Introduction" }
     deck: { fr: "1", en: "1_en" }
     pdf: { fr: "1.pdf", en: "1_en.pdf" }
+  - title: { fr: "SLAM Visuel et Inertiel", en: "SLAM Visuel et Inertiel" }
+    deck: { fr: "2", en: "2_en" }
+    pdf: { fr: "2.pdf", en: "2_en.pdf" }

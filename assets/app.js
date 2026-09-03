@@ -20,7 +20,7 @@ const UI = {
   },
   en: {
     topicsHeading: "Course topics",
-    topicsNote: "",
+    topicsNote: "Slides are published as the term goes on.",
     empty: "No topic published yet.",
     slides: "Slides",
     pdf: "PDF",

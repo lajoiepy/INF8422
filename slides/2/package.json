@@ -1,0 +1,14 @@
+{
+  "name": "inf8422-cours3-slam",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev cours_slam.md --open",
+    "build": "slidev build cours_slam.md",
+    "export": "slidev export cours_slam.md"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.19.0",
+    "@slidev/theme-default": "latest"
+  }
+}
