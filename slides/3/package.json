@@ -1,0 +1,19 @@
+{
+  "name": "inf8422-cours2-estimation",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test:lift": "node --test tests/lift-solve-retract.test.mjs",
+    "test:cholesky": "node --test tests/cholesky.test.mjs",
+    "test:bayes": "node --test tests/bayes-update.test.mjs",
+    "test:springs": "node --test tests/spring.test.mjs",
+    "test:taylor": "node --test tests/taylor.test.mjs",
+    "dev": "slidev cours_estimation_etat.md --open",
+    "build": "slidev build cours_estimation_etat.md",
+    "export": "slidev export cours_estimation_etat.md"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.19.1",
+    "@slidev/theme-default": "latest"
+  }
+}
