@@ -38,5 +38,5 @@ topics:
     deck: { fr: "2", en: "2_en" }
     pdf: { fr: "2.pdf", en: "2_en.pdf" }
   - title: { fr: "Probabilistic Inference and State Estimation", en: "Probabilistic Inference and State Estimation" }
-    deck: "3_en"
-    pdf: "3_en.pdf"
+    deck: { fr: "3", en: "3_en" }
+    pdf: { fr: "3.pdf", en: "3_en.pdf" }
