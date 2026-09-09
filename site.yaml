@@ -37,6 +37,6 @@ topics:
   - title: { fr: "SLAM Visuel et Inertiel", en: "SLAM Visuel et Inertiel" }
     deck: { fr: "2", en: "2_en" }
     pdf: { fr: "2.pdf", en: "2_en.pdf" }
-  - title: { fr: "Probabilistic Inference and State Estimation", en: "Probabilistic Inference and State Estimation" }
+  - title: { fr: "Inférence Probabiliste et Estimation d'État", en: "Probabilistic Inference and State Estimation" }
     deck: { fr: "3", en: "3_en" }
     pdf: { fr: "3.pdf", en: "3_en.pdf" }
