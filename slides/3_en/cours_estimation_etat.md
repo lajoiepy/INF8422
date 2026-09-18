@@ -1359,11 +1359,11 @@ hideInToc: true
 Normal equations:
 
 $$\Lambda = A^\top A$$
-$$\boxed{\Lambda\Delta^* = A^\top b}$$
+$$\boxed{\Lambda\Delta = A^\top b}$$
 
 Factoring $\Lambda$ = **eliminating** the variables one by one (Gaussian elimination / Cholesky).
 
-Eliminating a variable **connects all of its neighbors to one another** in the graph → **new** edges = **new** non-zeros in $\Lambda$: the **fill-in**.
+Eliminating a variable **connects all its neighbors together** in the graph → **new** edges = **new** nonzeros in $\Lambda$: the **fill-in**.
 
 More fill-in ⇒ $\Lambda$ less sparse ⇒ more costly factorization.
 
@@ -1372,15 +1372,15 @@ More fill-in ⇒ $\Lambda$ less sparse ⇒ more costly factorization.
 
 <InfoBlock title="Ordering matters enormously">
 
-The **elimination ordering** determines the fill-in:
-- landmark seen by all poses, eliminated **last** → **0 fill-in**.
-- the **same** one eliminated **first** → links all poses → **massive** fill-in.
+The **elimination order** determines the fill-in:
+- a landmark seen by all poses, eliminated **last** → **zero fill-in**.
+- the **same** one eliminated **first** → connects all poses → **massive** fill-in.
 
 </InfoBlock>
 
 <AlertBlock title="In practice">
 
-Heuristics (**COLAMD**, **AMD**) compute an ordering that **reduces the fill-in** before factoring — a key ingredient of SLAM solvers (GTSAM, Ceres, g2o).
+Heuristics (**COLAMD**, **AMD**) compute an order that **reduces fill-in** before factorizing — a key ingredient of SLAM solvers (GTSAM, Ceres, g2o).
 
 </AlertBlock>
 
@@ -1395,7 +1395,7 @@ hideInToc: true
 
 <div></div>
 
-We **solve** $\Lambda x = \eta$ by elimination in two orders: (ℓ last) vs (ℓ first).
+We **solve** $\Lambda \Delta = \eta$ by elimination in two orders: (ℓ last) vs (ℓ first).
 
 <EliminationFillIn class="mt-1" />
 
@@ -1928,14 +1928,12 @@ hideInToc: true
 zoom: 0.95
 ---
 
-# LM: Gauss–Newton, gradient… or in between?
+# LM: Gauss–Newton, gradient... or in between?
 
 At one iteration: $H=J^\top J$, $g=J^\top r=\nabla F$ and $D=\mathrm{diag}(H)$.
 
 $$
 \boxed{(H+\lambda D)\,\Delta=-g}
-\qquad\Longleftrightarrow\qquad
-\boxed{\Delta_{\mathrm{LM}}=-(H+\lambda D)^{-1}g}
 $$
 
 <div class="grid grid-cols-3 gap-5 mt-4" style="font-size:0.86em">
@@ -1973,9 +1971,9 @@ $$H\Delta+\lambda D\Delta=-g$$
 
 $$\boxed{\Delta=-(H+\lambda D)^{-1}g}$$
 
-**Both terms matter**: we keep the curvature information from GN while damping the step.
+**Both terms matter**: we keep GN's curvature information while damping the step.
 
-A trade-off, **not a weighted average of the two steps**.
+A compromise, **not a weighted average of the two steps**.
 
 </div>
 </div>
@@ -2481,17 +2479,21 @@ hideInToc: true
 
 Let $R_A, R_B \in SO(3)$.
 
-**1. Geodesic Distance (angular)**
+**1. Geodesic (Angular) Distance**
 
 The minimal angle to align the two frames:
 
 $$d_\theta(R_A, R_B) = \arccos\!\left(\frac{\text{tr}(R_A^T R_B) - 1}{2}\right)$$
 
-**2. Chordal Distance (Frobenius)**
+**2. Chordal (Frobenius) Distance**
 
 Euclidean distance in the space of matrices:
 
 $$d_c(R_A, R_B) = \|R_A - R_B\|_F$$
+
+where
+
+$$\|\mathbf{M}\|_F^2 = \sum_{i,j} M_{ij}^2 = \operatorname{tr}\left(\mathbf{M}^\top \mathbf{M}\right)$$
 
 </div>
 <div>

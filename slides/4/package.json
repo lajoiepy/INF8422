@@ -1,0 +1,20 @@
+{
+  "name": "inf8422-cours4-representations",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev cours_representations.md --open",
+    "build": "slidev build cours_representations.md",
+    "export": "slidev export cours_representations.md",
+    "test:math": "node --test tests/distance-transform.test.mjs"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.20.1",
+    "@slidev/theme-default": "latest",
+    "three": "^0.166.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.166.0",
+    "playwright-chromium": "^1.53.0"
+  }
+}

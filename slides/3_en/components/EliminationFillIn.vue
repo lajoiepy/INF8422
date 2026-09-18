@@ -43,7 +43,7 @@ function buildSteps(mode: 'last' | 'first') {
   const steps: Step[] = [{
     phase: 'init', M: clone(M), g: g.slice(), fill: zeros(),
     pivotRow: -1, targetRow: -1, solveRow: -1, elim: [], pivotVar: -1,
-    msg: 'Système Λx = η réordonné selon l\'ordre choisi. « ▶ Étape » applique une opération de ligne.',
+    msg: 'Système ΛΔ = η réordonné selon l\'ordre choisi. « ▶ Étape » applique une opération de ligne.',
   }]
 
   // ── élimination avant : une opération rᵢ ← rᵢ − fac·rₖ par étape ──
@@ -78,7 +78,7 @@ function buildSteps(mode: 'last' | 'first') {
     steps.push({
       phase: 'back', M: clone(U), g: gf.slice(), fill: finalFill,
       pivotRow: -1, targetRow: -1, solveRow: i, elim: [...P], pivotVar: -1,
-      msg: `x_${lbl(P[i])} = ${rhs} = ${f(y[i])}`,
+      msg: `Δ_${lbl(P[i])} = ${rhs} = ${f(y[i])}`,
     })
   }
   return { P, steps, y }
@@ -189,7 +189,7 @@ function pcol(i: number) { return P.value[i] < 3 ? '#475569' : '#00BDF2' }
       <rect x="292" y="2" width="264" height="210" fill="#f8fafc" rx="5" stroke="#CBD5E1" stroke-width="1.2"/>
       <text x="424" y="14" text-anchor="middle"
         style="font-size:8.5px;fill:#94a3b8;font-style:italic;font-family:sans-serif">
-        Élimination de Λx = η  →  x
+        Élimination de ΛΔ = η  →  Δ
       </text>
 
       <g v-for="j in N" :key="`h${j}`">
@@ -197,7 +197,7 @@ function pcol(i: number) { return P.value[i] < 3 ? '#475569' : '#00BDF2' }
           :style="`font-size:6.5px;font-weight:700;font-family:sans-serif;fill:${pcol(j-1)}`">{{ lbl(P[j-1]) }}</text>
       </g>
       <text :x="440" :y="MY-4" text-anchor="middle" style="font-size:7.5px;fill:#0f766e;font-weight:700;font-family:serif">η</text>
-      <text :x="470" :y="MY-4" text-anchor="middle" style="font-size:7.5px;fill:#15803d;font-weight:700;font-family:serif">x</text>
+      <text :x="470" :y="MY-4" text-anchor="middle" style="font-size:7.5px;fill:#15803d;font-weight:700;font-family:serif">Δ</text>
 
       <g v-for="i in N" :key="`row${i}`">
         <!-- surlignage de la ligne active -->
@@ -246,7 +246,7 @@ function pcol(i: number) { return P.value[i] < 3 ? '#475569' : '#00BDF2' }
       <button class="ef-btn-main" @click="nextStep" :disabled="step >= LAST">▶ Étape ({{ step }}/{{ LAST }})</button>
       <button class="ef-btn-r2" @click="solveAll" :disabled="step >= LAST">⏩ Résoudre</button>
       <button class="ef-btn-r" @click="reset">↺</button>
-      <span class="ef-info">Chaque étape = une sous-équation ; même x, fill-in différent selon l'ordre.</span>
+      <span class="ef-info">Chaque étape = une sous-équation ; même Δ, fill-in différent selon l'ordre.</span>
     </div>
   </div>
 </template>

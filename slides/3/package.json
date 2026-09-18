@@ -2,6 +2,9 @@
   "name": "inf8422-cours2-estimation",
   "type": "module",
   "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "test:lift": "node --test tests/lift-solve-retract.test.mjs",
     "test:cholesky": "node --test tests/cholesky.test.mjs",
@@ -13,7 +16,7 @@
     "export": "slidev export cours_estimation_etat.md"
   },
   "dependencies": {
-    "@slidev/cli": "^52.19.1",
-    "@slidev/theme-default": "latest"
+    "@slidev/cli": "52.19.1",
+    "@slidev/theme-default": "0.25.0"
   }
 }

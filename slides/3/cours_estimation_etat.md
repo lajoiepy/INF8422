@@ -1359,7 +1359,7 @@ hideInToc: true
 Équations normales:
 
 $$\Lambda = A^\top A$$
-$$\boxed{\Lambda\Delta^* = A^\top b}$$
+$$\boxed{\Lambda\Delta = A^\top b}$$
 
 Factoriser $\Lambda$ = **éliminer** les variables une à une (élimination de Gauss / Cholesky).
 
@@ -1395,7 +1395,7 @@ hideInToc: true
 
 <div></div>
 
-On **résout** $\Lambda x = \eta$ par élimination dans deux ordres : (ℓ en dernier) vs (ℓ en premier).
+On **résout** $\Lambda \Delta = \eta$ par élimination dans deux ordres : (ℓ en dernier) vs (ℓ en premier).
 
 <EliminationFillIn class="mt-1" />
 
@@ -1934,8 +1934,6 @@ zoom: 0.95
 
 $$
 \boxed{(H+\lambda D)\,\Delta=-g}
-\qquad\Longleftrightarrow\qquad
-\boxed{\Delta_{\mathrm{LM}}=-(H+\lambda D)^{-1}g}
 $$
 
 <div class="grid grid-cols-3 gap-5 mt-4" style="font-size:0.86em">
@@ -2492,6 +2490,10 @@ $$d_\theta(R_A, R_B) = \arccos\!\left(\frac{\text{tr}(R_A^T R_B) - 1}{2}\right)$
 Distance euclidienne dans l'espace des matrices :
 
 $$d_c(R_A, R_B) = \|R_A - R_B\|_F$$
+
+où
+
+$$\|\mathbf{M}\|_F^2 = \sum_{i,j} M_{ij}^2 = \operatorname{tr}\left(\mathbf{M}^\top \mathbf{M}\right)$$
 
 </div>
 <div>
