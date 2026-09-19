@@ -1,0 +1,17 @@
+{
+  "deck": "5",
+  "slides": 134,
+  "errors": [],
+  "externalRequests": [],
+  "overflows": [],
+  "browser": "Chromium / Playwright 1.61.1",
+  "canvas": "980×551.25 ; viewport 1280×720",
+  "checked": "2026-09-18",
+  "build": "passed",
+  "sourceChecks": "passed",
+  "importPermutation": "passed",
+  "numericalInteractions": "passed",
+  "svgVisibility": "passed",
+  "mathRendering": "passed",
+  "sourcesSha256": "2e0d99dc772328e9ed05c70e8673ea7009644554345e22cd457d250f9b99bf24"
+}

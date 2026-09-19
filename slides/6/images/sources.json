@@ -1,0 +1,47 @@
+[
+  {
+    "file": "monodepth2-resultats.png",
+    "source": "https://arxiv.org/abs/1806.01260",
+    "citation": "Godard et al. — Monodepth2, ICCV 2019",
+    "figure": "Figure 1",
+    "pdf_page": 1,
+    "crop": [
+      308,
+      208,
+      547,
+      412
+    ],
+    "status": "downloaded",
+    "checked": "2026-09-18"
+  },
+  {
+    "file": "mae-architecture.png",
+    "source": "https://arxiv.org/abs/2111.06377",
+    "citation": "He et al. — Masked Autoencoders, CVPR 2022",
+    "figure": "Figure 1",
+    "pdf_page": 1,
+    "crop": [
+      306,
+      196,
+      546,
+      333
+    ],
+    "status": "downloaded",
+    "checked": "2026-09-18"
+  },
+  {
+    "file": "prehension-auto-etiquetee.png",
+    "source": "https://arxiv.org/abs/1603.02199",
+    "citation": "Levine et al. — Learning Hand-Eye Coordination, arXiv 2016",
+    "figure": "Figure 1",
+    "pdf_page": 1,
+    "crop": [
+      306,
+      246,
+      541,
+      510
+    ],
+    "status": "downloaded",
+    "checked": "2026-09-18"
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "file": "maptr-architecture.png",
+    "source": "https://arxiv.org/abs/2208.14437",
+    "citation": "Liao et al. — MapTR, ICLR 2023",
+    "figure": "Figure 4",
+    "pdf_page": 7,
+    "crop": [
+      105,
+      68,
+      505,
+      310
+    ],
+    "status": "downloaded",
+    "checked": "2026-09-18"
+  },
+  {
+    "file": "pointnet-architecture.png",
+    "source": "https://arxiv.org/abs/1612.00593",
+    "citation": "Qi et al. — PointNet, CVPR 2017",
+    "figure": "Figure 2",
+    "pdf_page": 3,
+    "crop": [
+      50,
+      35,
+      545,
+      237
+    ],
+    "status": "downloaded",
+    "checked": "2026-09-18"
+  },
+  {
+    "file": "detr-ensembles.png",
+    "source": "https://arxiv.org/abs/2005.12872",
+    "citation": "Carion et al. — DETR, ECCV 2020",
+    "figure": "Figure 1",
+    "pdf_page": 2,
+    "crop": [
+      30,
+      35,
+      384,
+      100
+    ],
+    "status": "downloaded",
+    "checked": "2026-09-18"
+  },
+  {
+    "file": "simplebev-projection.png",
+    "source": "https://simple-bev.github.io/simple_bev_sep30.pdf",
+    "citation": "Harley et al. — Simple-BEV, ICRA 2023",
+    "figure": "Figure 1",
+    "status": "reused",
+    "origin": "old_10/images/simplebev/push-pull.png",
+    "checked": "2026-09-18"
+  }
+]

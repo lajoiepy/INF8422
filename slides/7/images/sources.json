@@ -1,0 +1,113 @@
+[
+  {
+    "file": "clip-apprentissage.png",
+    "source": "https://arxiv.org/abs/2103.00020",
+    "citation": "Radford et al. — CLIP, ICML 2021",
+    "figure": "Figure 1",
+    "pdf_page": 2,
+    "crop": [
+      54,
+      66,
+      544,
+      248
+    ],
+    "status": "downloaded",
+    "checked": "2026-09-18"
+  },
+  {
+    "file": "sam-moteur-donnees.png",
+    "source": "https://arxiv.org/abs/2304.02643",
+    "citation": "Kirillov et al. — Segment Anything, ICCV 2023",
+    "figure": "Figure 1",
+    "pdf_page": 1,
+    "crop": [
+      51,
+      193,
+      545,
+      318
+    ],
+    "status": "downloaded",
+    "checked": "2026-09-18"
+  },
+  {
+    "file": "da3-architecture.png",
+    "source": "https://arxiv.org/abs/2511.10647",
+    "citation": "Lin et al. — Depth Anything 3, ICLR 2026",
+    "figure": "Figure 2",
+    "pdf_page": 5,
+    "crop": [
+      70,
+      92,
+      544,
+      256
+    ],
+    "status": "downloaded",
+    "checked": "2026-09-18"
+  },
+  {
+    "file": "talo-pipeline.png",
+    "source": "https://arxiv.org/abs/2512.02341",
+    "citation": "Zhang et al. — TALO, CVPR 2026 (figure de la version arXiv 2025)",
+    "figure": "Figure 2",
+    "pdf_page": 4,
+    "crop": [
+      57,
+      70,
+      554,
+      253
+    ],
+    "status": "downloaded",
+    "checked": "2026-09-18"
+  },
+  {
+    "file": "conceptgraphs-pipeline.png",
+    "source": "https://arxiv.org/abs/2309.16650",
+    "citation": "Gu et al. — ConceptGraphs, ICRA 2024",
+    "figure": "Figure 2",
+    "pdf_page": 3,
+    "crop": [
+      53,
+      47,
+      559,
+      254
+    ],
+    "status": "downloaded",
+    "checked": "2026-09-18"
+  },
+  {
+    "file": "dust3r-vue-ensemble.png",
+    "source": "https://arxiv.org/abs/2312.14132",
+    "citation": "Wang et al. — DUSt3R, CVPR 2024",
+    "figure": "Figure 1",
+    "status": "reused",
+    "origin": "summer-school/images/dust3r/overview.png",
+    "checked": "2026-09-18"
+  },
+  {
+    "file": "vggt-architecture.png",
+    "source": "https://arxiv.org/abs/2503.11651",
+    "citation": "Wang et al. — VGGT, CVPR 2025",
+    "figure": "Architecture",
+    "status": "reused",
+    "origin": "summer-school/images/vggt/architecture.png",
+    "checked": "2026-09-18"
+  },
+  {
+    "file": "conceptfusion-requetes.png",
+    "source": "https://arxiv.org/abs/2302.07241",
+    "citation": "Jatavallabhula et al. — ConceptFusion, RSS 2023",
+    "figure": "Figure 1",
+    "status": "reused",
+    "origin": "summer-school/images/conceptfusion/queries.png",
+    "checked": "2026-09-18"
+  },
+  {
+    "file": "nerf-pipeline.png",
+    "source": "https://arxiv.org/abs/2003.08934",
+    "citation": "Mildenhall et al. — NeRF, ECCV 2020",
+    "figure": "Figure 1",
+    "status": "reused",
+    "origin": "summer-school/images/nerf/pipeline.png",
+    "checked": "2026-09-18"
+  }
+]
