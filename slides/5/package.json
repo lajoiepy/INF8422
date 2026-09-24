@@ -1,0 +1,22 @@
+{
+  "name": "inf8422-apprentissage-5",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev slides.md --open",
+    "build": "slidev build slides.md",
+    "export": "slidev export slides.md --output cours-apprentissage-supervise.pdf --per-slide --timeout 60000 --wait 300 && node tests/pdf.mjs",
+    "check": "node tests/check.mjs",
+    "check:browser": "node tests/browser.mjs",
+    "test:math": "node --test tests/math.test.mjs",
+    "check:pdf": "node tests/pdf.mjs"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.20.1",
+    "@slidev/theme-default": "0.25.0",
+    "three": "0.166.1"
+  },
+  "devDependencies": {
+    "playwright-chromium": "1.61.1"
+  }
+}

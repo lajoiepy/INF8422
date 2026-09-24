@@ -1,0 +1,13 @@
+<script setup lang="ts">
+import {ref,computed} from 'vue'
+import {descent,linearLoss,trainingPairs} from '../utils/learningMath'
+import {usePlayback} from '../utils/usePlayback'
+const eta=ref(.12),batch=ref(1),count=ref(24)
+const full=computed(()=>descent(24,eta.value,count.value)),mini=computed(()=>descent(batch.value,eta.value,count.value)),px=(x:number)=>60+(x+2)*105,py=(y:number)=>215-(y+1.5)*65
+const path=(values:ReturnType<typeof descent>)=>values.map((p,i)=>`${i?'L':'M'}${px(p.theta[0])},${py(p.theta[1])}`).join(' ')
+const advance=()=>{if(count.value>=90)return false;count.value++}, {playing}=usePlayback(advance)
+const colors=['#087fa1','#CF1C24']
+const mx2=trainingPairs.reduce((s,[x])=>s+x*x,0)/24,opt=[trainingPairs.reduce((s,[x,y])=>s+x*y,0)/(mx2*24),trainingPairs.reduce((s,[x,y])=>s+y,0)/24]
+</script>
+<template><div class="lab-grid"><svg class="lab-svg" viewBox="0 0 530 270" role="img" aria-label="Trajectoires de descente de gradient"><defs><clipPath id="optim-area"><rect x="30" y="15" width="480" height="225"/></clipPath></defs><g clip-path="url(#optim-area)"><ellipse v-for="r in [.03,.12,.3,.6,1,1.5]" :key="r" :cx="px(opt[0])" :cy="py(opt[1])" :rx="Math.sqrt(2*r/mx2)*105" :ry="Math.sqrt(2*r)*65" fill="none" stroke="#cbd5e1"/><g v-for="(values,i) in [full,mini]" :key="i"><path :d="path(values)" :stroke="colors[i]" class="line"/><circle :cx="px(values.at(-1)!.theta[0])" :cy="py(values.at(-1)!.theta[1])" r="6" :fill="colors[i]"/></g></g><text x="30" y="260">Pente w →</text><text x="20" y="18">Biais b</text><text x="245" y="260" style="fill:#087fa1">Bleu : lot complet</text><text x="245" y="22" style="fill:#CF1C24">Rouge : mini-lot</text></svg><div class="lab-readout" data-testid="optimization"><p>Régression : ŷ = wx + b</p><p>Les deux trajectoires minimisent le même objectif sur <b>24 observations</b>.</p><p v-for="(values,i) in [full,mini]" :key="i"><b>{{i?'Mini-lot':'Lot complet'}}</b><br/>L = {{values.at(-1)!.loss.toFixed(4)}}<br/>{{values.length-1}} mises à jour</p><p v-if="full.at(-1)!.loss>100||mini.at(-1)!.loss>100"><strong>Divergence : trajectoire hors cadre.</strong></p></div></div>
+<div class="lab-controls"><button class="primary" @click="playing=!playing">{{playing?'Pause':'Lecture'}}</button><button @click="advance">Étape</button><label>η <input aria-label="Taux optimisation" v-model.number="eta" type="range" min=".01" max="2.8" step=".01"/>{{eta.toFixed(2)}}</label><label>Mini-lot<select v-model.number="batch" aria-label="Taille mini-lot"><option :value="1">1 (SGD)</option><option :value="6">6</option><option :value="24">24</option></select></label><label>Pas<input aria-label="Itérations" v-model.number="count" type="range" min="0" max="90"/>{{count}}</label></div></template>

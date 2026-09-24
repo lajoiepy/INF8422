@@ -43,3 +43,6 @@ topics:
   - title: { fr: "Représentations 3D de Cartes", en: "Représentations 3D de Cartes" }
     deck: "4"
     pdf: "4.pdf"
+  - title: { fr: "Apprentissage supervisé pour la perception robotique", en: "Apprentissage supervisé pour la perception robotique" }
+    deck: { fr: "5", en: "5_en" }
+    pdf: { fr: "5.pdf", en: "5_en.pdf" }

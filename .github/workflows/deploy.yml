@@ -2,7 +2,7 @@
 # Prérequis (une seule fois) : Settings → Pages → Source = "GitHub Actions".
 #
 # Les decks sont découverts automatiquement : tout dossier slides/<id>/
-# contenant un package.json ET un cours_*.md est buildé — publier un nouveau
+# contenant un package.json ET un cours_*.md ou slides.md est buildé — publier un nouveau
 # cours ne demande aucune modification de ce fichier.
 #
 # ⚠️ Fichier généré depuis INF8422_internal/public-site/workflows/deploy.yml —
@@ -15,6 +15,7 @@ on:
     branches: [main]
     paths:
       - "slides/**"
+      - "scripts/deck-files.py"
       - "pdf/**"
       - "assets/**"
       - "site.yaml"
@@ -41,7 +42,8 @@ jobs:
         run: |
           decks=$(for d in slides/*/; do
             [ -f "$d/package.json" ] || continue
-            ls "$d"/cours_*.md >/dev/null 2>&1 || continue
+            [ -f "$d/slides.md" ] || compgen -G "$d/cours_*.md" >/dev/null || continue
+            python3 scripts/deck-files.py entry "$d" >/dev/null || exit 1
             basename "$d"
           done | jq -R . | jq -sc .)
           echo "Decks found: $decks"
@@ -67,7 +69,7 @@ jobs:
         working-directory: slides/${{ matrix.deck }}
         run: |
           npm ci --omit=dev --no-audit --no-fund
-          md=$(ls cours_*.md | head -n1)
+          md=$(python3 ../../scripts/deck-files.py entry .)
           npx slidev build "$md" --base "/${{ github.event.repository.name }}/slides/${{ matrix.deck }}/"
           # Slidev ne copie dans dist/ que public/ et les assets importés par
           # Vite ; les médias référencés en chemin relatif brut dans les slides
