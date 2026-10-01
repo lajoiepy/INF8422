@@ -36,9 +36,9 @@ hideInToc: true
 
 # Learning a representation useful to the robot
 
-<StepFlow :steps='["Bases de l’apprentissage supervisé", "Représentations par objets", "Cartes pour la conduite autonomeß", "Étiquetage multimodal"]' />
+<StepFlow :steps='["Bases de l’apprentissage supervisé", "Représentations par objets", "Cartes pour la conduite autonome", "Étiquetage multimodal"]' />
 
-Understand the data, losses and computations that link an observation to an exploitable representation.
+Understand the data, losses, and computations that link an observation to an actionable representation.
 
 <ExampleBlock title="Course objective">
 
@@ -47,7 +47,7 @@ Be able to explain how a model learns, interpret its errors, and integrate its o
 </ExampleBlock>
 
 <!--
-Guideline: about three hours, with deeper dives available. Get participation on the demonstrations: predict, manipulate, interpret.
+Benchmark: about three hours, with optional deep dives available. Get participation on the demonstrations: predict, manipulate, interpret.
 -->
 
 ---

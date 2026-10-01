@@ -476,7 +476,7 @@ hideInToc: true
 
 For several applications, it is necessary to estimate the pose of an object.
 
-The simplest case is when the geometry of the object is known a priori. For example, we can have a CAD model of the object.
+The simplest case is when the geometry of the object is known a priori. For example, one may have a CAD model (CAD) of the object.
 
 The CAD model defines the points on the object in the object frame $O$. The pose expresses them in the camera frame $C$:
 
@@ -487,16 +487,9 @@ $$
 
 **Six degrees of freedom**: three for translation and three for rotation. The dimensions of the object are provided by its model.
 
-<ExampleBlock title="Where is a point on the handle?" v-click>
-
-A point on the drill is $X_O=(0.1\,;\,0\,;\,0)\,\mathrm m$. A $90^\circ$ rotation around $z$ gives it as $(0\,;\,0.1\,;\,0)$.
-
-With $t=(0.5\,;\,0\,;\,2)\,\mathrm m$, it becomes $X_C=(0.5\,;\,0.1\,;\,2)\,\mathrm m$. This position allows the robot to prepare its grasp.
-
-</ExampleBlock>
 
 <!--
-Positive rotation in a right-handed frame. Computing R then t corresponds to T camera←object, which belongs to SE(3). Commanding the grasp also requires the calibration between the camera and the robot. Do not implicitly invert this transformation.
+Positive rotation in a right-handed frame. Computing R then t corresponds to T camera←object, which belongs to SE(3). To command the gripper, the calibration between camera and robot is also needed. Do not implicitly invert this transformation.
 -->
 
 ---
@@ -565,7 +558,7 @@ class: figure-slide
 
 <img src="../images/posecnn.png" class="paper-figure" alt="Xiang et al., PoseCNN, RSS 2018, Figure 2" />
 
-Shared features feed three outputs: segmentation, translation, and rotation.
+Shared features (features) feed three outputs: segmentation, translation, and rotation.
 
 The training targets contain known poses. Rotation is regressed as a quaternion.
 
@@ -869,13 +862,13 @@ zoom: 1.2
 </div>
 <div>
 
-Scene graph 3: organizes geometry, objects, places and building in a single hierarchy.
+3D scene graph: organizes geometry, objects, places, rooms and building in a single hierarchy.
 
-The nodes (objects, places, rooms) have class labels and poses.
+Nodes (objects, places, rooms) have class and pose labels.
 
-The relations represent membership, proximity and connectivity.
+Relations represent membership, proximity and connectivity.
 
-**Example:** "Find a chair in the meeting room." The graph links the chair to the room, then the room to the traversable places to reach it.
+**Example:** "Find a chair in the meeting room." The graph connects the chair to the room, then the room to the traversable places used to reach it.
 
 </div>
 </div>
@@ -883,7 +876,7 @@ The relations represent membership, proximity and connectivity.
 <div class="citation">Hughes et al., Hydra, RSS 2022, Figure 1. <a href="https://arxiv.org/abs/2201.13360">Paper and figure source</a>.</div>
 
 <!--
-Hydra is a complete spatial perception system. The supervised predictions are inputs to the map; the whole hierarchy does not result from a single supervised loss.
+Hydra is a complete spatial perception system. Supervised predictions are inputs to the map; the whole hierarchy does not result from a single supervised loss.
 -->
 
 ---

@@ -157,15 +157,15 @@ hideInToc: true
 class: example-flow-slide
 ---
 
-# How to Learn the BEV Representation?
+# How to learn the BEV representation?
 
-In Lift-Splat-Shoot, a task defined on the ground can supervise the entire chain:
+In Lift-Splat-Shoot, a task defined on the ground can supervise the entire pipeline:
 
-<StepFlow :steps='["Calibrated images", "Features + depth weights", "Lift + Splat", "BEV predictions"]' />
+<StepFlow :steps='["Calibrated images", "Features + depth weights", "Lift + Splat", "Comparison with annotations"]' />
 
 <ExampleBlock title="A cell occupied by a vehicle">
 
-The annotation says "vehicle". The BEV head assigns it a probability of $0{,}2$: its cross-entropy loss is $-\ln(0{,}2)\approx1{,}61$.
+The annotation indicates "vehicle". The BEV head assigns it a probability of $0{,}2$: its cross-entropy loss is $-\ln(0{,}2)\approx1{,}61$.
 
 This error backpropagates to the visual features and depth weights that contributed to the grid.
 
@@ -176,7 +176,7 @@ The depth weights can thus be learned **without metric depth annotations**. They
 <div class="citation">Philion and Fidler, ECCV 2020. <a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot</a>.</div>
 
 <!--
-The BEV class probability and the latent depth weights are two distinct distributions. The example illustrates one cell; the objective aggregates the annotated cells. The projection geometry uses known intrinsics and extrinsics; it is not entirely learned. LSS demonstrates BEV segmentation learning without a depth sensor at training or inference time.
+The BEV class probability and the latent depth weights are two distinct distributions. The example illustrates one cell; the objective aggregates annotated cells. The projection geometry uses known intrinsics and extrinsics; it is not entirely learned. LSS demonstrates BEV segmentation learning without a depth sensor at training or inference time.
 -->
 
 ---
