@@ -161,7 +161,7 @@ class: example-flow-slide
 
 Dans Lift-Splat-Shoot, une tâche définie au sol peut superviser toute la chaîne :
 
-<StepFlow :steps='["Images calibrées", "Caractéristiques + poids de profondeur", "Lift + Splat", "Prédictions BEV"]' />
+<StepFlow :steps='["Images calibrées", "Caractéristiques + poids de profondeur", "Lift + Splat", "Comparaison avec les annotations"]' />
 
 <ExampleBlock title="Une cellule occupée par un véhicule">
 

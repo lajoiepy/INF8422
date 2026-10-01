@@ -487,13 +487,6 @@ $$
 
 **Six degrés de liberté** : trois pour la translation et trois pour la rotation. Les dimensions de l’objet sont fournies par son modèle.
 
-<ExampleBlock title="Où se trouve un point de la poignée ?" v-click>
-
-Un point de la perceuse est $X_O=(0{,}1\,;\,0\,;\,0)\,\mathrm m$. Une rotation de $90^\circ$ autour de $z$ le donne en $(0\,;\,0{,}1\,;\,0)$.
-
-Avec $t=(0{,}5\,;\,0\,;\,2)\,\mathrm m$, il devient $X_C=(0{,}5\,;\,0{,}1\,;\,2)\,\mathrm m$. Cette position permet au robot de préparer sa prise.
-
-</ExampleBlock>
 
 <!--
 Rotation positive dans un repère direct. Le calcul R puis t correspond à T caméra←objet, qui appartient à SE(3). Pour commander la prise, il faut également la calibration entre caméra et robot. Ne pas inverser cette transformation implicitement.
@@ -565,7 +558,7 @@ class: figure-slide
 
 <img src="../images/posecnn.png" class="paper-figure" alt="Xiang et al., PoseCNN, RSS 2018, Figure 2" />
 
-Des caractéristiques (featuresß) partagées alimentent trois sorties : segmentation, translation et rotation.
+Des caractéristiques (features) partagées alimentent trois sorties : segmentation, translation et rotation.
 
 Les cibles d’entraînement contiennent des poses connues. La rotation est régressée sous forme de quaternion.
 
@@ -869,7 +862,7 @@ zoom: 1.2
 </div>
 <div>
 
-Graphe de scène 3: organise géométrie, objets, lieux, pièces et bâtiment dans une même hierarchie.
+Graphe de scène 3D: organise géométrie, objets, lieux, pièces et bâtiment dans une même hierarchie.
 
 Les noeuds (objets, lieux, pièces) ont des étiquettes de classe et de pose.
 

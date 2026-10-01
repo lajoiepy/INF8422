@@ -36,7 +36,7 @@ hideInToc: true
 
 # Apprendre une représentation utile au robot
 
-<StepFlow :steps='["Bases de l’apprentissage supervisé", "Représentations par objets", "Cartes pour la conduite autonomeß", "Étiquetage multimodal"]' />
+<StepFlow :steps='["Bases de l’apprentissage supervisé", "Représentations par objets", "Cartes pour la conduite autonome", "Étiquetage multimodal"]' />
 
 Comprendre les données, les pertes et les calculs qui relient une observation à une représentation exploitable.
 
