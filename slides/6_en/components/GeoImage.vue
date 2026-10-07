@@ -1,0 +1,13 @@
+<script setup lang="ts">
+import {ref,onMounted,watch} from 'vue'
+const props=withDefaults(defineProps<{image:any;label:string;kind?:string;point?:number[]|null;alternative?:number[]|null;neighborhood?:boolean;selectable?:boolean;pointColor?:string;alternativeColor?:string}>(),{kind:'image',point:null,alternative:null,neighborhood:false,selectable:false,pointColor:"#CF1C24",alternativeColor:"#25B34B"})
+const emit=defineEmits(['select']),canvas=ref<HTMLCanvasElement>(),ready=ref(false)
+function draw(){if(!canvas.value)return;const context=canvas.value.getContext('2d');if(!context)return;const buffer=context.createImageData(props.image.width,props.image.height);props.image.pixels.forEach((rgb:number[],k:number)=>{for(let e=0;e<3;e++)buffer.data[k*4+e]=Math.round(Math.max(0,Math.min(1,rgb[e]))*255);buffer.data[k*4+3]=255});context.putImageData(buffer,0,0);ready.value=true}
+onMounted(draw);watch(()=>props.image,draw,{flush:'post'})
+const inside=(p:number[]|null)=>p&&p[0]>=0&&p[0]<props.image.width&&p[1]>=0&&p[1]<props.image.height
+function select(event:MouseEvent){if(!props.selectable)return;const b=(event.currentTarget as HTMLElement).getBoundingClientRect();emit('select',[Math.min(props.image.width-1,Math.max(0,Math.floor((event.clientX-b.left)/b.width*props.image.width))),Math.min(props.image.height-1,Math.max(0,Math.floor((event.clientY-b.top)/b.height*props.image.height)))])}
+</script>
+<template>
+ <figure class="geo-image" :data-kind="kind"><figcaption>{{label}}</figcaption><div class="geo-image-content" :class="{selectable}" @click.stop="select"><canvas ref="canvas" :width="image.width" :height="image.height" :data-ready="ready" :data-kind="kind" role="img" :aria-label="label"/><svg class="geo-image-overlay" :viewBox="`0 0 ${image.width} ${image.height}`" aria-hidden="true"><g v-if="inside(point)"><rect v-if="neighborhood" :x="Math.floor(point![0])-.5" :y="Math.floor(point![1])-.5" width="2" height="2" fill="none" stroke="white" stroke-width=".45"/><circle :cx="point![0]" :cy="point![1]" r="1.7" fill="none" stroke="white" stroke-width="1"/><circle :cx="point![0]" :cy="point![1]" r="1.7" fill="none" :stroke="pointColor" stroke-width=".55"/></g><circle v-if="inside(alternative)" :cx="alternative![0]" :cy="alternative![1]" r="1.8" fill="none" :stroke="alternativeColor" stroke-width=".65"/></svg></div></figure>
+</template>
+<style scoped>.geo-image{margin:0}.geo-image figcaption{font-size:15px;line-height:1.25;margin:0 0 6px;color:#334155}.geo-image-content{position:relative;line-height:0;border:1px solid #cbd5e1}.geo-image canvas{width:100%;height:auto;display:block;image-rendering:pixelated}.geo-image-overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.selectable{cursor:crosshair}</style>

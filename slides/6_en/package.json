@@ -1,0 +1,28 @@
+{
+  "name": "inf8422-apprentissage-6",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev slides.md --open",
+    "build": "slidev build slides.md",
+    "export": "node scripts/export.mjs && node tests/pdf.mjs",
+    "check": "node tests/check.mjs",
+    "check:browser": "node tests/browser.mjs",
+    "test:math": "node --test tests/training-step.test.mjs tests/representation-scene.test.mjs tests/matching.test.mjs tests/prediction.test.mjs tests/geometry.test.mjs tests/correspondence.test.mjs tests/interaction.test.mjs tests/evaluation.test.mjs",
+    "check:pdf": "node tests/pdf.mjs"
+  },
+  "dependencies": {
+    "@slidev/cli": "52.20.1",
+    "@slidev/theme-default": "0.25.0",
+    "three": "0.166.1"
+  },
+  "devDependencies": {
+    "pdf-lib": "1.17.1",
+    "playwright-chromium": "1.61.1"
+  },
+  "overrides": {
+    "@shikijs/vitepress-twoslash": {
+      "floating-vue": "5.2.2"
+    }
+  }
+}

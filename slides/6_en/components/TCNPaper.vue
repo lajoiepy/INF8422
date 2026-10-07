@@ -1,0 +1,8 @@
+<script setup lang="ts">
+withDefaults(defineProps<{stage?:number}>(),{stage:0})
+</script>
+<template>
+ <div class="tcn-paper-layout"><div class="tcn-paper-image"><img src="../images/tcn-architecture.png" alt="Original TCN Figure 1 with simultaneous blue anchor and positive frames and a red temporal negative"/><svg v-if="stage>=1" class="tcn-cursor" viewBox="0 0 348 279" aria-hidden="true"><path d="M94 79V266" stroke="#168034" stroke-width="1.5" stroke-dasharray="4 3"/></svg></div><div class="tcn-paper-explanation"><InfoBlock title="Anchor and positive">Different views of the same timestamp.</InfoBlock><AlertBlock v-if="stage>=1" title="Temporal negative">A different time in the same sequence.</AlertBlock><div v-if="stage>=1" class="small-note">Green cursor links the simultaneous views. Original blue and red boxes retain the paper’s roles.</div><div v-if="stage>=2" class="tcn-initialization">Video relations supervise this objective.<br>The experimental encoder starts from ImageNet weights.</div></div></div>
+ <SSLControls/><div class="citation"><a href="https://arxiv.org/pdf/1704.06888v3">Sermanet et al., Time-Contrastive Networks, ICRA 2018 · Fig. 1 · arXiv v3</a></div>
+</template>
+<style scoped>.tcn-paper-layout{display:grid;grid-template-columns:480px 1fr;gap:24px;align-items:center}.tcn-paper-image{position:relative;width:430px;height:345px;margin:auto}.tcn-paper-image img{width:100%;height:100%;object-fit:contain}.tcn-cursor{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.tcn-paper-explanation{font-size:17px;line-height:1.4}.tcn-paper-explanation .small-note{font-size:14px;margin:12px 0}.tcn-initialization{padding:10px 12px;border-left:3px solid #CF1C24;background:#fff1f1;font-size:16px;margin-top:14px}</style>

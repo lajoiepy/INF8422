@@ -46,3 +46,6 @@ topics:
   - title: { fr: "Apprentissage supervisé pour la perception robotique", en: "Apprentissage supervisé pour la perception robotique" }
     deck: { fr: "5", en: "5_en" }
     pdf: { fr: "5.pdf", en: "5_en.pdf" }
+  - title: { fr: "Apprentissage auto-supervisé pour la perception robotique", en: "Apprentissage auto-supervisé pour la perception robotique" }
+    deck: { fr: "6", en: "6_en" }
+    pdf: { fr: "6.pdf", en: "6_en.pdf" }
