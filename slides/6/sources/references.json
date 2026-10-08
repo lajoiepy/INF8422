@@ -1,0 +1,228 @@
+{
+  "checked": "2026-10-07",
+  "language": "en",
+  "entries": [
+    {
+      "id": "simclr",
+      "slide": "R01",
+      "label": "SimCLR",
+      "title": "A Simple Framework for Contrastive Learning of Visual Representations",
+      "authors": "T. Chen, S. Kornblith, M. Norouzi, G. Hinton",
+      "venue": "ICML 2020",
+      "publication": "Proceedings of Machine Learning Research 119:1597–1607, 2020",
+      "url": "https://proceedings.mlr.press/v119/chen20j.html",
+      "metadata_sources": [
+        "https://proceedings.mlr.press/v119/chen20j.html"
+      ],
+      "course_version": "arXiv:2002.05709v3",
+      "used_in": "S04–S05, S11, S17–S23, S31, S79–S80"
+    },
+    {
+      "id": "dino",
+      "slide": "R01",
+      "label": "DINO",
+      "title": "Emerging Properties in Self-Supervised Vision Transformers",
+      "authors": "M. Caron, H. Touvron, I. Misra, H. Jégou, J. Mairal, P. Bojanowski, A. Joulin",
+      "venue": "ICCV 2021",
+      "publication": "Proceedings of the IEEE/CVF International Conference on Computer Vision, pp. 9650–9660, 2021",
+      "url": "https://arxiv.org/abs/2104.14294v2",
+      "metadata_sources": [
+        "https://openaccess.thecvf.com/content/ICCV2021/html/Caron_Emerging_Properties_in_Self-Supervised_Vision_Transformers_ICCV_2021_paper.html",
+        "https://arxiv.org/abs/2104.14294v2"
+      ],
+      "course_version": "arXiv:2104.14294v2",
+      "used_in": "S27–S31, S68"
+    },
+    {
+      "id": "vicreg",
+      "slide": "R01",
+      "label": "VICReg",
+      "title": "VICReg: Variance-Invariance-Covariance Regularization for Self-Supervised Learning",
+      "authors": "A. Bardes, J. Ponce, Y. LeCun",
+      "venue": "ICLR 2022",
+      "publication": "International Conference on Learning Representations, 2022",
+      "url": "https://openreview.net/pdf?id=xm6YD62D1Ub",
+      "metadata_sources": [
+        "https://openreview.net/pdf?id=xm6YD62D1Ub",
+        "https://arxiv.org/abs/2105.04906v3"
+      ],
+      "course_version": "arXiv:2105.04906v3",
+      "used_in": "S26, S31"
+    },
+    {
+      "id": "mae",
+      "slide": "R01",
+      "label": "MAE",
+      "title": "Masked Autoencoders Are Scalable Vision Learners",
+      "authors": "K. He, X. Chen, S. Xie, Y. Li, P. Dollár, R. Girshick",
+      "venue": "CVPR 2022",
+      "publication": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 16000–16009, 2022",
+      "url": "https://arxiv.org/abs/2111.06377v3",
+      "metadata_sources": [
+        "https://openaccess.thecvf.com/content/CVPR2022/html/He_Masked_Autoencoders_Are_Scalable_Vision_Learners_CVPR_2022_paper.html",
+        "https://arxiv.org/abs/2111.06377v3"
+      ],
+      "course_version": "arXiv:2111.06377v3",
+      "used_in": "S05, S32–S37, S42"
+    },
+    {
+      "id": "ijepa",
+      "slide": "R01",
+      "label": "I-JEPA",
+      "title": "Self-Supervised Learning From Images With a Joint-Embedding Predictive Architecture",
+      "authors": "M. Assran, Q. Duval, I. Misra, P. Bojanowski, P. Vincent, M. Rabbat, Y. LeCun, N. Ballas",
+      "venue": "CVPR 2023",
+      "publication": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 15619–15629, 2023",
+      "url": "https://arxiv.org/abs/2301.08243v3",
+      "metadata_sources": [
+        "https://openaccess.thecvf.com/content/CVPR2023/html/Assran_Self-Supervised_Learning_From_Images_With_a_Joint-Embedding_Predictive_Architecture_CVPR_2023_paper.html",
+        "https://arxiv.org/abs/2301.08243v3"
+      ],
+      "course_version": "arXiv:2301.08243v3",
+      "used_in": "S38–S42",
+      "links": [
+        {
+          "title": "Code officiel d’apprentissage: src/train.py",
+          "url": "https://github.com/facebookresearch/ijepa/blob/main/src/train.py",
+          "used_in": "S40",
+          "snapshot": "sources/ijepa-train.py; SHA-256 recorded in sources/verification.json"
+        }
+      ]
+    },
+    {
+      "id": "fixmatch",
+      "slide": "R01",
+      "label": "FixMatch",
+      "supporting": true,
+      "title": "FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence",
+      "authors": "K. Sohn, D. Berthelot, C.-L. Li, Z. Zhang, N. Carlini, E. D. Cubuk, A. Kurakin, H. Zhang, C. Raffel",
+      "venue": "NeurIPS 2020",
+      "publication": "Advances in Neural Information Processing Systems 33, 2020",
+      "url": "https://proceedings.neurips.cc/paper/2020/file/06964dce9addb1c5cb5d6e3d9838f733-Paper.pdf",
+      "metadata_sources": [
+        "https://proceedings.neurips.cc/paper/2020/file/06964dce9addb1c5cb5d6e3d9838f733-Paper.pdf",
+        "https://arxiv.org/abs/2001.07685"
+      ],
+      "used_in": "S04–S05",
+      "metadata_note": "Author order follows the published PDF; the proceedings landing-page author list differs."
+    },
+    {
+      "id": "netvlad",
+      "slide": "R01",
+      "label": "NetVLAD",
+      "supporting": true,
+      "title": "NetVLAD: CNN Architecture for Weakly Supervised Place Recognition",
+      "authors": "R. Arandjelović, P. Gronat, A. Torii, T. Pajdla, J. Sivic",
+      "venue": "CVPR 2016",
+      "publication": "Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pp. 5297–5307, 2016",
+      "url": "https://arxiv.org/abs/1511.07247",
+      "metadata_sources": [
+        "https://openaccess.thecvf.com/content_cvpr_2016/html/Arandjelovic_NetVLAD_CNN_Architecture_CVPR_2016_paper.html",
+        "https://arxiv.org/abs/1511.07247"
+      ],
+      "used_in": "S12"
+    },
+    {
+      "id": "monodepth2",
+      "slide": "R02",
+      "label": "Monodepth2",
+      "title": "Digging Into Self-Supervised Monocular Depth Estimation",
+      "authors": "C. Godard, O. Mac Aodha, M. Firman, G. Brostow",
+      "venue": "ICCV 2019",
+      "publication": "Proceedings of the IEEE/CVF International Conference on Computer Vision, pp. 3827–3837, 2019",
+      "url": "https://arxiv.org/abs/1806.01260v4",
+      "metadata_sources": [
+        "https://arxiv.org/abs/1806.01260v4",
+        "https://openaccess.thecvf.com/content_ICCV_2019/html/Godard_Digging_Into_Self-Supervised_Monocular_Depth_Estimation_ICCV_2019_paper.html"
+      ],
+      "course_version": "arXiv:1806.01260v4",
+      "used_in": "S01, S43–S56, S82",
+      "links": [
+        {
+          "title": "Évaluateur officiel de profondeur: evaluate_depth.py",
+          "url": "https://github.com/nianticlabs/monodepth2/blob/b017a8164fae339b0ce01f3a9e5048104d5abd0e/evaluate_depth.py",
+          "detail": "commit b017a81",
+          "used_in": "S82",
+          "commit": "b017a8164fae339b0ce01f3a9e5048104d5abd0e"
+        }
+      ]
+    },
+    {
+      "id": "tcn",
+      "slide": "R02",
+      "label": "TCN",
+      "title": "Time-Contrastive Networks: Self-Supervised Learning from Video",
+      "authors": "P. Sermanet, C. Lynch, Y. Chebotar, J. Hsu, E. Jang, S. Schaal, S. Levine",
+      "venue": "ICRA 2018",
+      "publication": "IEEE International Conference on Robotics and Automation, 2018",
+      "url": "https://arxiv.org/abs/1704.06888v3",
+      "metadata_sources": [
+        "https://research.google/pubs/time-contrastive-networks-self-supervised-learning-from-video/",
+        "https://arxiv.org/abs/1704.06888v3"
+      ],
+      "course_version": "arXiv:1704.06888v3",
+      "used_in": "S57–S58"
+    },
+    {
+      "id": "don",
+      "slide": "R02",
+      "label": "Dense Object Nets",
+      "title": "Dense Object Nets: Learning Dense Visual Object Descriptors By and For Robotic Manipulation",
+      "authors": "P. R. Florence, L. Manuelli, R. Tedrake",
+      "venue": "CoRL 2018",
+      "publication": "Proceedings of Machine Learning Research 87:373–385, 2018",
+      "url": "https://proceedings.mlr.press/v87/florence18a.html",
+      "metadata_sources": [
+        "https://proceedings.mlr.press/v87/florence18a.html"
+      ],
+      "course_version": "arXiv:1806.08756v2",
+      "used_in": "S59–S63"
+    },
+    {
+      "id": "wvn",
+      "slide": "R03",
+      "label": "WVN",
+      "title": "Wild visual navigation: fast traversability learning via pre-trained models and online self-supervision",
+      "authors": "M. Mattamala, J. Frey, P. Libera, N. Chebrolu, G. Martius, C. Cadena, M. Hutter, M. Fallon",
+      "venue": "Autonomous Robots 49, article 19, 2025",
+      "publication": "Autonomous Robots 49, article 19, 2025; DOI: 10.1007/s10514-025-10202-x",
+      "url": "https://link.springer.com/article/10.1007/s10514-025-10202-x",
+      "metadata_sources": [
+        "https://link.springer.com/article/10.1007/s10514-025-10202-x"
+      ],
+      "course_version": "Journal version published 18 July 2025",
+      "used_in": "S65–S71"
+    },
+    {
+      "id": "actaim",
+      "slide": "R03",
+      "label": "ActAIM",
+      "title": "Self-Supervised Learning of Action Affordances as Interaction Modes",
+      "authors": "L. Wang, N. Dvornik, R. Dubeau, M. Mittal, A. Garg",
+      "venue": "ICRA 2023",
+      "publication": "IEEE International Conference on Robotics and Automation, 2023",
+      "url": "https://arxiv.org/abs/2305.17565v1",
+      "metadata_sources": [
+        "https://arxiv.org/abs/2305.17565v1",
+        "https://actaim.github.io/"
+      ],
+      "course_version": "arXiv:2305.17565v1",
+      "used_in": "S72–S76"
+    },
+    {
+      "id": "grouped-data",
+      "slide": "R03",
+      "label": "Évaluation",
+      "supporting": true,
+      "title": "Cross-validation: evaluating estimator performance — grouped-data iterators",
+      "authors": "scikit-learn developers",
+      "venue": "Documentation officielle · consultée le 7 octobre 2026",
+      "publication": "scikit-learn 1.9.1 documentation, Sections 3.1 and 3.1.2.4; accessed 7 October 2026",
+      "url": "https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-iterators-for-grouped-data",
+      "metadata_sources": [
+        "https://scikit-learn.org/stable/modules/cross_validation.html"
+      ],
+      "used_in": "S81"
+    }
+  ]
+}

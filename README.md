@@ -28,8 +28,10 @@ Toute modification faite directement dans ce dépôt sera perdue.
 Les scripts reconnaissent un unique `cours_*.md`, comme pour les cours précédents,
 ou `slides.md` en l'absence de `cours_*.md`. Les imports `src:` sont suivis
 récursivement ; seules les sections utilisées sont publiées, avec leurs médias,
-les composants et leurs dépendances dans `lib/` et `utils/`. La même détection
-sert à l'aperçu local et au déploiement GitHub Actions.
+les composants et leurs dépendances dans `lib/` et `utils/`, ainsi que les fichiers
+JSON importés (par exemple `sources/references.json`). Les données importées sont
+vérifiées avant la copie. La même détection sert à l'aperçu local et au
+déploiement GitHub Actions.
 
 La traduction conserve les chemins des imports et partage son cache entre les
 sections. Les retouches manuelles de chaque fichier traduit sont protégées ;

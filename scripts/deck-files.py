@@ -14,6 +14,9 @@ CODE_DIRS = ('components', 'layouts', 'lib', 'utils', 'public', 'snippets', 'set
 CODE_EXT = {'.vue', '.ts', '.js', '.mjs', '.css', '.md'}
 MEDIA_EXT = r'png|jpe?g|gif|svg|webp|avif|mp4|webm'
 MEDIA = re.compile(r'[\w@.,/+-]+\.(?:' + MEDIA_EXT + r')\b', re.I)
+JSON_IMPORT = re.compile(
+    r'\b(?:from\s*|import\s*(?:\(\s*)?|require\s*\(\s*)'
+    r'[\x27"](\.{1,2}/[^\x27"]+\.json)[\x27"]')
 
 
 def entry(root):
@@ -84,6 +87,31 @@ def markdown(root):
     return result
 
 
+def source_files(root):
+    sources = {root / p for p in markdown(root)}
+    sources.update(root.glob('*.vue'))
+    sources.update(root.glob('*.css'))
+    for name in ('vite.config.ts', 'uno.config.ts'):
+        if (root / name).is_file():
+            sources.add(root / name)
+    for folder in CODE_DIRS:
+        sources.update(p for p in (root / folder).rglob('*') if p.is_file() and p.suffix in CODE_EXT)
+    return sorted(sources)
+
+
+def data(root):
+    """JSON importes par le code publie, sans copier les notes de recherche."""
+    root = root.resolve()
+    result = set()
+    for source in source_files(root):
+        for ref in JSON_IMPORT.findall(source.read_text(encoding='utf-8')):
+            path = local_path(root, source.parent / ref)
+            if not path.is_file():
+                raise ValueError('Donnees importees introuvables : %s (%s)' % (ref, source))
+            result.add(path.relative_to(root).as_posix())
+    return sorted(result)
+
+
 def media(root, all_media=False):
     root = root.resolve()
     if all_media:
@@ -95,13 +123,8 @@ def media(root, all_media=False):
                 if re.fullmatch(r'\.(?:' + MEDIA_EXT + ')', path.suffix, re.I):
                     result.append(path.relative_to(root).as_posix())
         return sorted(result)
-    sources = {root / p for p in markdown(root)}
-    sources.update(root.glob('*.vue'))
-    sources.update(root.glob('*.css'))
-    for folder in CODE_DIRS:
-        sources.update(p for p in (root / folder).rglob('*') if p.is_file() and p.suffix in CODE_EXT)
     result = set()
-    for source in sources:
+    for source in source_files(root):
         for match in MEDIA.finditer(source.read_text(encoding='utf-8')):
             ref = match.group()
             # Priorite au chemin relatif au fichier. Le repli a la racine
@@ -117,13 +140,14 @@ def media(root, all_media=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=('entry', 'markdown', 'media'))
+    parser.add_argument('command', choices=('entry', 'markdown', 'media', 'data'))
     parser.add_argument('root', type=lambda s: Path(s).resolve())
     parser.add_argument('--all-media', action='store_true')
     args = parser.parse_args()
     try:
         values = ([entry(args.root)] if args.command == 'entry' else markdown(args.root)
-                  if args.command == 'markdown' else media(args.root, args.all_media))
+                  if args.command == 'markdown' else data(args.root)
+                  if args.command == 'data' else media(args.root, args.all_media))
         print('\n'.join(values))
     except (ValueError, OSError) as exc:
         print(str(exc), file=sys.stderr)
