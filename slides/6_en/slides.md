@@ -149,14 +149,14 @@ src: ./sections/05-geometric-supervision.md
 layout: section
 class: course-divider
 storyboard: D06
-section: Correspondence through space and time
+section: Dense correspondence
 divider: true
-dividerFor: S57
+dividerFor: S59
 ---
 
 <div class="course-divider-label">Section 06</div>
 
-# Correspondence through space and time
+# Dense correspondence
 
 <div class="course-divider-colors" aria-hidden="true"><span /><span /><span /><span /></div>
 
@@ -191,14 +191,14 @@ src: ./sections/07-interaction-outcomes.md
 layout: section
 class: course-divider
 storyboard: D08
-section: Introductory adaptation and evaluation
+section: Key considerations to remember
 divider: true
 dividerFor: S79
 ---
 
 <div class="course-divider-label">Section 08</div>
 
-# Introductory adaptation and evaluation
+# Key considerations to remember
 
 <div class="course-divider-colors" aria-hidden="true"><span /><span /><span /><span /></div>
 

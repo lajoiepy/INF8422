@@ -22,7 +22,7 @@ const fmt=(v:number[])=>`[${v.map(x=>x.toFixed(3)).join(', ')}]`
   </svg>
   <MathLine :formula="stage===0?String.raw`\boldsymbol{\psi}_t=f_\theta(I_t),\qquad\boldsymbol{\psi}_s=f_\theta(I_s)`:String.raw`d_+=\|\boldsymbol{\psi}_t(\mathbf u_t)-\boldsymbol{\psi}_s(\mathbf u_s^+)\|_2,\quad d_-=\|\boldsymbol{\psi}_t(\mathbf u_t)-\boldsymbol{\psi}_s(\mathbf u_s^-)\|_2`" :small="stage>=1"/>
   <div class="descriptor-distance-readout"><span>{{stage>=1?`Distance correspondante d₊ = ${values.positiveDistance.toFixed(4)}`:'Chaque position image possède un vecteur.'}}</span><span v-if="stage>=2">Distance non correspondante d₋ = {{values.negativeDistance.toFixed(4)}}</span></div>
-  <div class="ssl-caption">{{stage===0?'Les paires de pixels sélectionnent les vecteurs denses locaux.':stage===1?'Les paires correspondantes rapprochent leurs vecteurs.':'Les non-correspondances imposent une séparation; la géométrie fournit les rôles.'}}</div>
+  <div class="ssl-caption">{{stage===0?'Les paires de pixels sélectionnent les vecteurs denses locaux.':stage===1?'Les paires correspondantes rapprochent leurs vecteurs.':'Les non-correspondances imposent une séparation.'}}</div>
   <div v-if="!nav.isPrintMode.value" class="ssl-parameter-controls lab-controls"><label>Paire d’apprentissage <select aria-label="Paire d’apprentissage de descripteurs" v-model="kind" @change="($event.target as HTMLElement).blur()"><option value="panel">Point d’avant-plan</option><option value="background">Point de fond</option></select></label></div>
   <SSLControls/><div class="ssl-disclosure">Champs illustratifs fixes et distances calculées · couleurs vectorielles; aucun encodeur entraîné ici</div>
  </div>

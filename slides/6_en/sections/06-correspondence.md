@@ -3,6 +3,7 @@ storyboard: S57
 section: Correspondence through space and time
 class: ssl-slide
 clicks: 2
+disabled: true
 ---
 
 # Time as a source of related observations
@@ -15,6 +16,7 @@ clicks: 2
 storyboard: S58
 class: ssl-slide
 clicks: 2
+disabled: true
 ---
 
 # Time-Contrastive Networks
@@ -53,7 +55,7 @@ class: ssl-slide
 clicks: 2
 ---
 
-# Matching with learned descriptors
+# Descriptor matching (searching for matches)
 
 <CorrespondenceLab mode="search" :stage="$clicks" />
 
@@ -83,10 +85,10 @@ clicks: 2
 ---
 storyboard: S63
 class: ssl-slide
-clicks: 2
+clicks: 1
 ---
 
-# Transferring a grasp point
+# Finding a grasp point
 
 <TaskPointTransfer :stage="$clicks" />
 

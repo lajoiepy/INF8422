@@ -43,7 +43,7 @@ const caption=computed(()=>props.mode==='measure'?'This run measures motion; the
   </div>
   <MathLine v-if="mode==='measure'" :formula="formulas.cost" small/>
   <MathLine v-if="mode==='project'&&stage>=1" :formula="formulas.projection" small/>
-  <div class="terrain-readout">{{last?'Commanded 1.00 m/s · measured '+last.measured.toFixed(2)+' m/s · automatic cost y = '+last.cost.toFixed(2):'Commanded 1.00 m/s · no later motion measurement yet'}}<span v-if="mode==='project'"> · {{labels.length}} projected targets · pose time offset {{shift.toFixed(1)}} s</span></div>
+  <div class="terrain-readout">{{last?'Commanded 1.00 m/s · measured '+last.measured.toFixed(2)+' m/s · loss y = '+last.cost.toFixed(2):'Commanded 1.00 m/s · no later motion measurement yet'}}<span v-if="mode==='project'"> · {{labels.length}} projected targets · pose time offset {{shift.toFixed(1)}} s</span></div>
   <div v-if="showEstimate" class="terrain-estimate"><template v-if="last">Toy local estimate: {{estimates[samples.length-1].toFixed(3)}} → measured target {{last.cost.toFixed(2)}} · mean squared error {{loss?.toFixed(4)}}<button v-if="!nav.isPrintMode.value" @click.stop="update();($event.target as HTMLElement).blur()">Update toy estimates</button></template><template v-else>No measured targets available yet.</template></div>
   <div class="ssl-caption">{{caption}}</div>
   <div v-if="mode==='coverage'&&stage>=1" class="terrain-paper-choice">WVN's zero score for unvisited segments is a conservative modeling choice, not an observed failure.</div>

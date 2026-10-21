@@ -53,7 +53,7 @@ class: ssl-slide
 clicks: 3
 ---
 
-# Projecting experience into an earlier image
+# Reprojecting experience
 
 <TerrainExperience mode="project" :stage="$clicks" />
 
@@ -82,6 +82,7 @@ clicks: 2
 storyboard: S71
 class: ssl-slide
 clicks: 2
+disabled: true
 ---
 
 # Measured outcomes and unvisited terrain
@@ -130,6 +131,7 @@ clicks: 3
 storyboard: S75
 class: ssl-slide
 clicks: 2
+disabled: true
 ---
 
 # Losses for interaction-derived targets
@@ -154,6 +156,7 @@ clicks: 2
 storyboard: S77
 class: ssl-slide
 clicks: 2
+disabled: true
 ---
 
 # Imperfect targets and selected experience
@@ -168,7 +171,7 @@ class: ssl-slide
 clicks: 2
 ---
 
-# The shared learning principle
+# Summary: the learning principle
 
 <InteractionLearning mode="synthesis" :stage="$clicks" />
 

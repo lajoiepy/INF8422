@@ -17,6 +17,7 @@ clicks: 1
 storyboard: S44
 class: ssl-slide
 clicks: 1
+disabled: true
 ---
 
 # Notation des poses dans le cours
@@ -55,7 +56,7 @@ class: ssl-slide
 clicks: 1
 ---
 
-# Changer de repère caméra
+# Effet de la pose de la caméra
 
 <GeometryLab mode="pose" :stage="$clicks" />
 
@@ -65,6 +66,7 @@ clicks: 1
 storyboard: S48
 class: ssl-slide
 clicks: 2
+disabled: true
 ---
 
 # Projection source et échantillonnage
@@ -76,7 +78,7 @@ clicks: 2
 ---
 storyboard: S49
 class: ssl-slide
-clicks: 2
+clicks: 1
 ---
 
 # Perte de reconstruction photométrique
@@ -113,6 +115,7 @@ clicks: 1
 storyboard: S52
 class: ssl-slide
 clicks: 2
+disabled: true
 ---
 
 # Objets en mouvement indépendant
@@ -127,7 +130,7 @@ class: ssl-slide
 clicks: 2
 ---
 
-# Occultation et désoccultation
+# Limites liées aux occultations
 
 <GeometryLab mode="occlusion" :stage="$clicks" />
 
@@ -155,6 +158,7 @@ clicks: 2
 storyboard: S55
 class: ssl-slide
 clicks: 3
+disabled: true
 ---
 
 # Choix de reconstruction de Monodepth2
@@ -175,7 +179,7 @@ clicks: 1
 
 <div class="ssl-caption">Images caméra enregistrées en haut; profondeurs monoculaires Monodepth2 prédites en bas.</div>
 
-<div v-if="$clicks>=1" class="takeaway">L’apprentissage relie les observations; l’inférence prédit la profondeur d’une seule image.</div>
+<div v-if="$clicks>=1" class="takeaway">Pour une profondeur métrique, il faut ajouter un fine-tuning par supervision contre des données 3D (ex: LiDAR).</div>
 
 <SSLControls />
 

@@ -1,11 +1,11 @@
 ---
 storyboard: S79
-section: Introduction à l’adaptation et à l’évaluation
+section: Considérations importantes à retenir
 class: ssl-slide
 clicks: 2
 ---
 
-# Encodeur gelé et ajustement fin
+# Adaptation
 
 <AdaptationChoices :stage="$clicks" />
 
@@ -17,7 +17,7 @@ class: ssl-slide
 clicks: 2
 ---
 
-# Références de comparaison et efficacité des étiquettes
+# Efficacité des étiquettes (label efficiency)
 
 <LabelEfficiency :stage="$clicks" />
 

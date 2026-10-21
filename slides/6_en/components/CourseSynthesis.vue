@@ -5,7 +5,7 @@ const id=useId()
 const sources=[
  {title:'Related views',detail:'Augmentation / time',symbol:'x̃₁ ↔ x̃₂',color:'#00BDF2'},
  {title:'Hidden observations',detail:'Withheld pixels',symbol:'xₖ → target xₖ',color:'#F15A22'},
- {title:'Teacher outputs',detail:'Target features',symbol:'sg(fθ̄(x))',formula:'\\operatorname{sg}(f_{\\bar\\theta}(x))',color:'#25B34B'},
+ {title:'Self-Distillation',detail:'Target features',symbol:'sg(fθ̄(x))',formula:'\\operatorname{sg}(f_{\\bar\\theta}(x))',color:'#25B34B'},
  {title:'Geometry',detail:'Depth / visible matches',symbol:'Depth + poses',color:'#00BDF2'},
  {title:'Later measurements',detail:'Traversal / interaction',symbol:'o → Γ → y',color:'#F15A22'}
 ]
@@ -23,7 +23,7 @@ const sources=[
    <g v-if="stage>=2"><path d="M705 96V113H233V93" fill="none" stroke="#CF1C24" stroke-width="1.5" stroke-dasharray="5 3" :marker-end="'url(#'+id+'-gradient)'"/><path d="M472 113V93" fill="none" stroke="#CF1C24" stroke-width="1.5" stroke-dasharray="5 3" :marker-end="'url(#'+id+'-gradient)'"/><text x="432" y="142" text-anchor="middle" class="small">Compare → differentiate → update the model</text></g>
   </svg>
   <div class="synthesis-assumptions"><b>What the signal assumes</b><span>View relations · representation · visibility · timing · measurement support</span></div>
-  <div v-if="stage>=2" class="takeaway">Reuse the representation, or use the learned task predictor directly.<br>Evaluate its output on the intended held-out robot task.</div>
+  <div v-if="stage>=2" class="takeaway">Takeaway: the same representation can be reused for several tasks.</div>
   <div v-else class="ssl-caption">The automatic target supplies supervision; the objective shapes what the model preserves.</div>
   <SSLControls/><div class="ssl-disclosure">Common course schematic · architectures, target meanings, assumptions, and evaluation protocols differ across methods</div>
  </div>

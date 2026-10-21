@@ -3,6 +3,7 @@ storyboard: S57
 section: Correspondances dans l’espace et le temps
 class: ssl-slide
 clicks: 2
+disabled: true
 ---
 
 # Le temps comme source d’observations liées
@@ -15,6 +16,7 @@ clicks: 2
 storyboard: S58
 class: ssl-slide
 clicks: 2
+disabled: true
 ---
 
 # Time-Contrastive Networks
@@ -53,7 +55,7 @@ class: ssl-slide
 clicks: 2
 ---
 
-# Apparier avec des descripteurs appris
+# Appariement de descripteur (recherche de matches)
 
 <CorrespondenceLab mode="search" :stage="$clicks" />
 
@@ -83,10 +85,10 @@ clicks: 2
 ---
 storyboard: S63
 class: ssl-slide
-clicks: 2
+clicks: 1
 ---
 
-# Transférer un point de prise
+# Trouver un point de prise
 
 <TaskPointTransfer :stage="$clicks" />
 

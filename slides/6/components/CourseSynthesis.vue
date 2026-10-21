@@ -5,7 +5,7 @@ const id=useId()
 const sources=[
  {title:'Vues liées',detail:'Transformation / temps',symbol:'x̃₁ ↔ x̃₂',color:'#00BDF2'},
  {title:'Observations masquées',detail:'Pixels retirés',symbol:'xₖ → cible xₖ',color:'#F15A22'},
- {title:'Sorties enseignantes',detail:'Caractéristiques cibles',symbol:'sg(fθ̄(x))',formula:'\\operatorname{sg}(f_{\\bar\\theta}(x))',color:'#25B34B'},
+ {title:'Self-Distillation',detail:'Caractéristiques cibles',symbol:'sg(fθ̄(x))',formula:'\\operatorname{sg}(f_{\\bar\\theta}(x))',color:'#25B34B'},
  {title:'Géométrie',detail:'Profondeur / paires visibles',symbol:'Profondeur + poses',color:'#00BDF2'},
  {title:'Mesures ultérieures',detail:'Traversée / interaction',symbol:'o → Γ → y',color:'#F15A22'}
 ]
@@ -23,7 +23,7 @@ const sources=[
    <g v-if="stage>=2"><path d="M705 96V113H233V93" fill="none" stroke="#CF1C24" stroke-width="1.5" stroke-dasharray="5 3" :marker-end="'url(#'+id+'-gradient)'"/><path d="M472 113V93" fill="none" stroke="#CF1C24" stroke-width="1.5" stroke-dasharray="5 3" :marker-end="'url(#'+id+'-gradient)'"/><text x="432" y="142" text-anchor="middle" class="small">Comparer → différencier → mettre à jour</text></g>
   </svg>
   <div class="synthesis-assumptions"><b>Hypothèses du signal</b><span>Relations entre vues · représentation · visibilité · synchronisation · support de mesure</span></div>
-  <div v-if="stage>=2" class="takeaway">Réutiliser la représentation ou le prédicteur de tâche direct.<br>Évaluer la sortie sur la tâche robotique réservée.</div>
+  <div v-if="stage>=2" class="takeaway">À retenir: Une même représentation peut être réutilisée pour plusieurs tâches.</div>
   <div v-else class="ssl-caption">La cible automatique supervise; l’objectif façonne l’information conservée.</div>
   <SSLControls/><div class="ssl-disclosure">Schéma commun du cours · architectures, cibles, hypothèses et protocoles diffèrent selon les méthodes</div>
  </div>

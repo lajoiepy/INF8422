@@ -66,7 +66,7 @@ storyboard: S06
 clicks: 1
 ---
 
-# Préentraînement et ajustement fin facultatif
+# Préentraînement et fine tuning facultatif
 
 <LearningRoutes mode="pretraining" :stage="$clicks" />
 

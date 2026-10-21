@@ -127,6 +127,7 @@ clicks: 3
 storyboard: S41
 class: ssl-slide
 clicks: 2
+disabled: true
 ---
 
 # Architecture d’I-JEPA

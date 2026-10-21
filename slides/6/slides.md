@@ -149,14 +149,14 @@ src: ./sections/05-geometric-supervision.md
 layout: section
 class: course-divider
 storyboard: D06
-section: Correspondances dans l’espace et le temps
+section: Correspondances denses
 divider: true
 dividerFor: S57
 ---
 
 <div class="course-divider-label">Section 06</div>
 
-# Correspondances dans l’espace et le temps
+# Correspondances denses
 
 <div class="course-divider-colors" aria-hidden="true"><span /><span /><span /><span /></div>
 
@@ -198,7 +198,7 @@ dividerFor: S79
 
 <div class="course-divider-label">Section 08</div>
 
-# Introduction à l’adaptation et à l’évaluation
+# Considérations importantes à retenir
 
 <div class="course-divider-colors" aria-hidden="true"><span /><span /><span /><span /></div>
 

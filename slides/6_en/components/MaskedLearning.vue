@@ -34,7 +34,7 @@ const tokenIds=computed(()=>props.mode==='mask'&&props.stage<2?[]:sets.value.vis
     <g v-if="stage>=2"><rect x="12" y="15" width="690" height="69" rx="4" fill="#f8fafc" stroke="#cbd5e1"/><g v-for="(k,j) in tokenIds" :key="k" :transform="`translate(${24+j*(650/Math.max(tokenIds.length,1))} 28)`"><rect :width="Math.min(34,600/tokenIds.length)" height="30" fill="#dcf3fb" stroke="#00BDF2"/><text :x="Math.min(34,600/tokenIds.length)/2" y="21" text-anchor="middle" class="tiny">{{k}}</text></g><text x="355" y="107" text-anchor="middle" class="small">Visible patch tokens + their positions</text><path d="M710 48H748" class="ssl-forward"/><rect x="756" y="24" width="89" height="49" rx="4" class="ssl-encoder"/><text x="800" y="55" text-anchor="middle">fθ</text></g>
     <text v-else x="430" y="61" text-anchor="middle">{{stage===0?'Patch index k identifies a location in the original image.':`${sets.visible.length} visible patches; ${sets.hidden.length} values withheld from the encoder.`}}</text>
    </svg>
-   <div class="ssl-caption">{{stage<2?'The training procedure still has every original patch value.':'The MAE encoder receives visible tokens, with their original positions.'}}</div>
+   <div class="ssl-caption">{{stage<2?'The training procedure still has every original patch value.':'The MAE (masked autoencoder) encoder receives visible tokens, with their original positions.'}}</div>
   </template>
   <template v-else-if="mode==='architecture'">
    <div v-if="stage<3" class="mae-custom">
@@ -49,10 +49,10 @@ const tokenIds=computed(()=>props.mode==='mask'&&props.stage<2?[]:sets.value.vis
    <div v-if="stage<3" class="ssl-caption">{{stage===0?'Encode only visible patches.':stage===1?'Reinsert locations using encoded visible tokens and learned mask tokens.':'The decoder predicts pixel vectors at all patch positions.'}}</div>
   </template>
   <template v-else>
-   <div class="pixel-panels"><figure><figcaption>Original target pixels</figcaption><MaskedScene :highlight="highlighted"/></figure><figure><figcaption>Visible encoder input</figcaption><MaskedScene :hidden="sets.hidden" :highlight="[selected]"/></figure><figure><figcaption>Illustrative pixel prediction</figcaption><MaskedScene :prediction="prediction" :highlight="highlighted"/></figure></div>
+   <div class="pixel-panels"><figure><figcaption>Original target pixels</figcaption><MaskedScene :highlight="highlighted"/></figure><figure><figcaption>Visible encoder input</figcaption><MaskedScene :hidden="sets.hidden" :highlight="[selected]"/></figure><figure><figcaption>Pixel prediction</figcaption><MaskedScene :prediction="prediction" :highlight="highlighted"/></figure></div>
    <MathLine :formula="stage===0?String.raw`\|\widehat x_k-x_k\|_2^2`:String.raw`\mathcal L_{\mathrm{pixel}}=\frac{1}{|\mathcal M|}\sum_{k\in\mathcal M}\|\widehat x_k-x_k\|_2^2`"/>
    <div class="pixel-readout">{{stage===0?`Selected masked patch k = ${selected}: squared error = ${patchPixelError(selected,prediction[selected]).toFixed(2)}`:`Average over ${sets.hidden.length} masked patches: Lpixel = ${stats.loss.toFixed(2)}`}}</div>
-   <div class="ssl-caption">{{stage<2?'xₖ is the original RGB pixel vector of patch k.':'Visible patch errors are excluded; the basic loss acts on M.'}}</div>
+   <div class="ssl-caption">{{stage<2?'xₖ is the original RGB pixel vector of patch k.':'The basic loss acts on masked patches.'}}</div>
    <div class="ssl-disclosure">Computed on RGB pixels scaled to [0, 1] · predicted tiles use nearby visible-patch mean colors, not a trained MAE · no per-patch target normalization</div>
   </template>
   <div v-if="!nav.isPrintMode.value&&(mode==='mask'||mode==='loss')" class="ssl-parameter-controls lab-controls">

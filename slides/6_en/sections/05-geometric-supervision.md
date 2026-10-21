@@ -17,6 +17,7 @@ clicks: 1
 storyboard: S44
 class: ssl-slide
 clicks: 1
+disabled: true
 ---
 
 # The course's pose notation
@@ -55,7 +56,7 @@ class: ssl-slide
 clicks: 1
 ---
 
-# Changing camera frame
+# Effect of camera pose
 
 <GeometryLab mode="pose" :stage="$clicks" />
 
@@ -65,6 +66,7 @@ clicks: 1
 storyboard: S48
 class: ssl-slide
 clicks: 2
+disabled: true
 ---
 
 # Source projection and sampling
@@ -76,7 +78,7 @@ clicks: 2
 ---
 storyboard: S49
 class: ssl-slide
-clicks: 2
+clicks: 1
 ---
 
 # Photometric reconstruction loss
@@ -113,6 +115,7 @@ clicks: 1
 storyboard: S52
 class: ssl-slide
 clicks: 2
+disabled: true
 ---
 
 # Independently moving objects
@@ -127,7 +130,7 @@ class: ssl-slide
 clicks: 2
 ---
 
-# Occlusion and disocclusion
+# Occlusion limitations
 
 <GeometryLab mode="occlusion" :stage="$clicks" />
 
@@ -155,6 +158,7 @@ clicks: 2
 storyboard: S55
 class: ssl-slide
 clicks: 3
+disabled: true
 ---
 
 # Monodepth2's reconstruction choices
@@ -175,7 +179,7 @@ clicks: 1
 
 <div class="ssl-caption">Recorded camera images above; Monodepth2 monocular depth predictions below.</div>
 
-<div v-if="$clicks>=1" class="takeaway">Training relates observations; inference predicts depth from one image.</div>
+<div v-if="$clicks>=1" class="takeaway">Metric depth requires additional supervised fine-tuning against 3D data (e.g., LiDAR).</div>
 
 <SSLControls />
 

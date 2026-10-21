@@ -22,7 +22,7 @@ const fmt=(v:number[])=>`[${v.map(x=>x.toFixed(3)).join(', ')}]`
   </svg>
   <MathLine :formula="stage===0?String.raw`\boldsymbol{\psi}_t=f_\theta(I_t),\qquad\boldsymbol{\psi}_s=f_\theta(I_s)`:String.raw`d_+=\|\boldsymbol{\psi}_t(\mathbf u_t)-\boldsymbol{\psi}_s(\mathbf u_s^+)\|_2,\quad d_-=\|\boldsymbol{\psi}_t(\mathbf u_t)-\boldsymbol{\psi}_s(\mathbf u_s^-)\|_2`" :small="stage>=1"/>
   <div class="descriptor-distance-readout"><span>{{stage>=1?`Matched distance d₊ = ${values.positiveDistance.toFixed(4)}`:'Each image location has a feature vector.'}}</span><span v-if="stage>=2">Unmatched distance d₋ = {{values.negativeDistance.toFixed(4)}}</span></div>
-  <div class="ssl-caption">{{stage===0?'Pixel pairs index local vectors in the dense encoder output.':stage===1?'Matched pairs train their vectors to be close.':'Nonmatching pairs provide a separation constraint; geometry supplies the pair roles.'}}</div>
+  <div class="ssl-caption">{{stage===0?'Pixel pairs index local vectors in the dense encoder output.':stage===1?'Matched pairs train their vectors to be close.':'Nonmatching pairs provide a separation constraint.'}}</div>
   <div v-if="!nav.isPrintMode.value" class="ssl-parameter-controls lab-controls"><label>Training pair <select aria-label="Descriptor training pair" v-model="kind" @change="($event.target as HTMLElement).blur()"><option value="panel">Foreground point</option><option value="background">Background point</option></select></label></div>
   <SSLControls/><div class="ssl-disclosure">Fixed illustrative dense fields and computed distances · feature colors encode vector components · no encoder training runs here</div>
  </div>

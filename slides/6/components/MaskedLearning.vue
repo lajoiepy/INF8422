@@ -34,7 +34,7 @@ const tokenIds=computed(()=>props.mode==='mask'&&props.stage<2?[]:sets.value.vis
     <g v-if="stage>=2"><rect x="12" y="15" width="690" height="69" rx="4" fill="#f8fafc" stroke="#cbd5e1"/><g v-for="(k,j) in tokenIds" :key="k" :transform="`translate(${24+j*(650/Math.max(tokenIds.length,1))} 28)`"><rect :width="Math.min(34,600/tokenIds.length)" height="30" fill="#dcf3fb" stroke="#00BDF2"/><text :x="Math.min(34,600/tokenIds.length)/2" y="21" text-anchor="middle" class="tiny">{{k}}</text></g><text x="355" y="107" text-anchor="middle" class="small">Jetons visibles + positions</text><path d="M710 48H748" class="ssl-forward"/><rect x="756" y="24" width="89" height="49" rx="4" class="ssl-encoder"/><text x="800" y="55" text-anchor="middle">fθ</text></g>
     <text v-else x="430" y="61" text-anchor="middle">{{stage===0?'k identifie une position dans l’image originale.':`${sets.visible.length} blocs visibles; ${sets.hidden.length} valeurs retirées de l’encodeur.`}}</text>
    </svg>
-   <div class="ssl-caption">{{stage<2?'La procédure conserve toutes les valeurs originales des blocs.':'L’encodeur MAE reçoit les jetons visibles et leurs positions originales.'}}</div>
+   <div class="ssl-caption">{{stage<2?'La procédure conserve toutes les valeurs originales des blocs.':'L’encodeur MAE (masked auto-encoder) reçoit les jetons visibles et leurs positions originales.'}}</div>
   </template>
   <template v-else-if="mode==='architecture'">
    <div v-if="stage<3" class="mae-custom">
@@ -49,10 +49,10 @@ const tokenIds=computed(()=>props.mode==='mask'&&props.stage<2?[]:sets.value.vis
    <div v-if="stage<3" class="ssl-caption">{{stage===0?'Encoder les blocs visibles seuls.':stage===1?'Restaurer les positions avec jetons visibles encodés et jetons de masque appris.':'Le décodeur prédit les pixels à toutes les positions de blocs.'}}</div>
   </template>
   <template v-else>
-   <div class="pixel-panels"><figure><figcaption>Pixels cibles originaux</figcaption><MaskedScene :highlight="highlighted"/></figure><figure><figcaption>Entrée encodeur visible</figcaption><MaskedScene :hidden="sets.hidden" :highlight="[selected]"/></figure><figure><figcaption>Prédiction de pixels illustrative</figcaption><MaskedScene :prediction="prediction" :highlight="highlighted"/></figure></div>
+   <div class="pixel-panels"><figure><figcaption>Pixels cibles originaux</figcaption><MaskedScene :highlight="highlighted"/></figure><figure><figcaption>Entrée encodeur visible</figcaption><MaskedScene :hidden="sets.hidden" :highlight="[selected]"/></figure><figure><figcaption>Prédiction de pixels</figcaption><MaskedScene :prediction="prediction" :highlight="highlighted"/></figure></div>
    <MathLine :formula="stage===0?String.raw`\|\widehat x_k-x_k\|_2^2`:String.raw`\mathcal L_{\mathrm{pixel}}=\frac{1}{|\mathcal M|}\sum_{k\in\mathcal M}\|\widehat x_k-x_k\|_2^2`"/>
    <div class="pixel-readout">{{stage===0?`Bloc masqué choisi k = ${selected}: erreur quadratique = ${patchPixelError(selected,prediction[selected]).toFixed(2)}`:`Moyenner sur ${sets.hidden.length} blocs masqués : Lpixel = ${stats.loss.toFixed(2)}`}}</div>
-   <div class="ssl-caption">{{stage<2?'xₖ est le vecteur RVB original du bloc k.':'Erreurs visibles exclues; la perte de base agit sur M.'}}</div>
+   <div class="ssl-caption">{{stage<2?'xₖ est le vecteur RVB original du bloc k.': 'La perte de base agit sur les blocs masqués.'}}</div>
    <div class="ssl-disclosure">Pixels RVB dans [0, 1] · tuiles prédites par moyenne du bloc visible voisin, sans MAE entraîné ni normalisation cible par bloc</div>
   </template>
   <div v-if="!nav.isPrintMode.value&&(mode==='mask'||mode==='loss')" class="ssl-parameter-controls lab-controls">

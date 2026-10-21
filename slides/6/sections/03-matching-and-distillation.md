@@ -61,7 +61,7 @@ clicks: 1
 ---
 storyboard: S21
 class: ssl-slide
-clicks: 3
+clicks: 2
 ---
 
 # Perte contrastive

@@ -53,7 +53,7 @@ class: ssl-slide
 clicks: 3
 ---
 
-# Projeter l’expérience dans une image antérieure
+# Reprojeter l’expérience
 
 <TerrainExperience mode="project" :stage="$clicks" />
 
@@ -82,6 +82,7 @@ clicks: 2
 storyboard: S71
 class: ssl-slide
 clicks: 2
+disabled: true
 ---
 
 # Résultats mesurés et terrain non visité
@@ -130,6 +131,7 @@ clicks: 3
 storyboard: S75
 class: ssl-slide
 clicks: 2
+disabled: true
 ---
 
 # Pertes pour les cibles issues d’interactions
@@ -154,6 +156,7 @@ clicks: 2
 storyboard: S77
 class: ssl-slide
 clicks: 2
+disabled: true
 ---
 
 # Cibles imparfaites et expérience sélectionnée
@@ -168,7 +171,7 @@ class: ssl-slide
 clicks: 2
 ---
 
-# Le principe d’apprentissage commun
+# En résumé: Le principe d’apprentissage
 
 <InteractionLearning mode="synthesis" :stage="$clicks" />
 

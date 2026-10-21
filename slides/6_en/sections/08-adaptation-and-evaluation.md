@@ -1,11 +1,11 @@
 ---
 storyboard: S79
-section: Introductory adaptation and evaluation
+section: Key considerations to remember
 class: ssl-slide
 clicks: 2
 ---
 
-# Frozen encoder and fine-tuning
+# Adaptation
 
 <AdaptationChoices :stage="$clicks" />
 
@@ -17,7 +17,7 @@ class: ssl-slide
 clicks: 2
 ---
 
-# Baselines and labeled-data efficiency
+# Label efficiency
 
 <LabelEfficiency :stage="$clicks" />
 

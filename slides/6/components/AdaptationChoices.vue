@@ -26,9 +26,9 @@ const formula=computed(()=>tune.value?'\\Theta=(\\theta,\\beta),\\quad\\text{mod
    <text x="430" y="209" text-anchor="middle" class="small">Sombre : prédiction · vert : cibles · tirets rouges : gradients</text>
   </svg>
   <MathLine :formula="formula" small/>
-  <div v-if="stage>=2" class="adaptation-context"><div><b>Caractéristiques gelées</b><span>Évaluer l’information accessible à la tête choisie.</span></div><div><b>Ajustement fin</b><span>Adapter les caractéristiques et la tête à la tâche cible.</span></div></div>
+  <div v-if="stage>=2" class="adaptation-context"><div><b>Caractéristiques gelées</b><span>Évaluer l’information accessible à la tête choisie.</span></div><div><b>fine tuning</b><span>Adapter les caractéristiques et la tête à la tâche cible.</span></div></div>
   <div class="ssl-caption">Une sonde linéaire exige hβ linéaire. Un encodeur gelé peut aussi alimenter une tête non linéaire.</div>
-  <div v-if="!nav.isPrintMode.value" class="ssl-parameter-controls"><label>Adaptation <select aria-label="Choix d’adaptation" v-model="mode" @change="($event.target as HTMLElement).blur()"><option value="frozen">Encodeur gelé</option><option value="tune">Ajustement fin</option></select></label></div>
+  <div v-if="!nav.isPrintMode.value" class="ssl-parameter-controls"><label>Adaptation <select aria-label="Choix d’adaptation" v-model="mode" @change="($event.target as HTMLElement).blur()"><option value="frozen">Encodeur gelé</option><option value="tune">fine tuning</option></select></label></div>
   <SSLControls/><div class="ssl-disclosure">Schéma de mise à jour · aucun optimiseur ni modèle préentraîné exécuté</div>
   <div class="citation"><a href="https://arxiv.org/html/2002.05709v3#A2.SS8">Chen et al., SimCLR, ICML 2020 · Annexe B.8</a></div>
  </div>
