@@ -9,10 +9,10 @@ const i=computed(()=>nav.isPrintMode.value?2:index.value),which=computed(()=>nav
 <template>
  <div class="label-efficiency" :data-budget="labelCounts[i]" :data-scenario="which" :data-scores="JSON.stringify(baselineStyles.map(b=>series[b.key][i]))">
   <div class="illustrative-label">Courbes illustratives</div>
-  <svg class="ssl-svg efficiency-chart" viewBox="0 0 860 292" role="img" aria-label="Score aval illustratif selon les étiquettes, comparant initialisation aléatoire et préentraînements supervisé/auto-supervisé">
+  <svg class="ssl-svg efficiency-chart" viewBox="0 0 860 292" role="img" aria-label="score en aval illustratif selon les étiquettes, comparant initialisation aléatoire et préentraînements supervisé/auto-supervisé">
    <path d="M80 35V235H748" class="ssl-forward"/>
    <g v-for="s in [0,.5,1]" :key="s"><path :d="'M80 '+scoreY(s)+'H748'" stroke="#e2e8f0"/><text x="66" :y="scoreY(s)+5" text-anchor="end" class="small">{{s.toFixed(1)}}</text></g>
-   <text x="84" y="22" class="small">Score aval ↑</text>
+   <text x="84" y="22" class="small">score en aval ↑</text>
    <g v-for="n in labelCounts" :key="n"><path :d="'M'+labelX(n)+' 235v5'" stroke="#475569"/><text :x="labelX(n)" y="258" text-anchor="middle" class="small">{{n}}</text></g>
    <text x="430" y="285" text-anchor="middle" class="small">Exemples étiquetés aval · axe logarithmique</text>
    <path :d="'M'+labelX(labelCounts[i])+' 35V235'" stroke="#94a3b8" stroke-dasharray="4 4"/>

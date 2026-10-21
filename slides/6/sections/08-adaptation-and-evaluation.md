@@ -53,7 +53,7 @@ class: ssl-slide
 clicks: 2
 ---
 
-# Perte prétexte et utilité aval
+# Perte prétexte et utilité en aval
 
 <ObjectiveUsefulness :stage="$clicks" />
 
