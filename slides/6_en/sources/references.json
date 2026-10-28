@@ -120,6 +120,32 @@
       "url": "https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-iterators-for-grouped-data",
       "metadata_sources": ["https://scikit-learn.org/stable/modules/cross_validation.html"],
       "used_in": "S81"
+    },
+    {
+      "id": "lora",
+      "slide": "R04",
+      "label": "LoRA",
+      "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "authors": "E. J. Hu, Y. Shen, P. Wallis, Z. Allen-Zhu, Y. Li, S. Wang, L. Wang, W. Chen",
+      "venue": "ICLR 2022",
+      "url": "https://arxiv.org/abs/2106.09685",
+      "used_in": "L01–L09"
+    },
+    {
+      "id": "combo",
+      "slide": "R04",
+      "label": "ComBo",
+      "title": "Fantastic Features and Where to Find Them: A Probing Method to combine Features from Multiple Foundation Models",
+      "authors": "B. Ramtoula, P.-Y. Lajoie, P. Newman, D. De Martini",
+      "venue": "NeurIPS 2025",
+      "url": "https://arxiv.org/abs/2512.01405",
+      "used_in": "C01–C08",
+      "links": [
+        {
+          "title": "Project and original figures",
+          "url": "https://bramtoula.github.io/combo/"
+        }
+      ]
     }
   ]
 }

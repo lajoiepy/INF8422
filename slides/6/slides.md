@@ -198,7 +198,7 @@ dividerFor: S79
 
 <div class="course-divider-label">Section 08</div>
 
-# Considérations importantes à retenir
+# Adaption de modèles
 
 <div class="course-divider-colors" aria-hidden="true"><span /><span /><span /><span /></div>
 

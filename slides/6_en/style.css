@@ -310,3 +310,22 @@ button {cursor:pointer;}
 .course-divider-colors span:nth-child(2){background:var(--poly-orange);}
 .course-divider-colors span:nth-child(3){background:var(--poly-green);}
 .course-divider-colors span:nth-child(4){background:var(--poly-blue);}
+
+/* Adaptation and feature fusion: compact native figures, consistent with the course. */
+.adaptation-module .adapt-cards{display:flex;gap:20px;margin:18px 0;align-items:stretch}
+.adaptation-module .adapt-cards>div{flex:1;border-top:4px solid #00BDF2;padding-top:10px;font-size:17px;line-height:1.4}
+.adaptation-module .adapt-cards>div:nth-child(2){border-color:#F15A22}.adaptation-module .adapt-cards>div:nth-child(3){border-color:#25B34B}
+.adaptation-module .adapt-cards b{display:block;font-size:19px;margin-bottom:7px}.adaptation-module .adapt-cards span{display:block}
+.adaptation-module .adapt-flow{display:flex;align-items:stretch;gap:20px;margin:25px 0}
+.adaptation-module .adapt-flow span{position:relative;flex:1;text-align:center;border:1.5px solid #94a3b8;background:#f8fafc;padding:16px 8px;font-size:17px;line-height:1.4}
+.adaptation-module .adapt-flow span+span:before{content:'→';position:absolute;left:-21px;top:calc(50% - 12px);color:#475569}
+.adaptation-module .adapt-stats{display:flex;gap:24px;margin:28px 0;color:#334155}.adaptation-module .adapt-stats>div{flex:1;font-size:16px;border-left:3px solid #00BDF2;padding-left:14px}.adaptation-module .adapt-stats strong{display:block;font-size:34px;line-height:1.3;color:#a81620;margin-bottom:9px}
+.adaptation-module .adapt-question{font-size:21px;line-height:1.4;margin:23px 0 16px}.adaptation-module .small-note{font-size:13px;line-height:1.4;margin:10px 0}.adaptation-module .citation{font-size:12px;line-height:1.4;margin-top:10px}.adaptation-module .katex-display{font-size:18px;margin:18px 0}.adaptation-module .takeaway{font-size:17px;line-height:1.4}
+.adaptation-module .combo-architecture{width:100%;height:235px;object-fit:contain;display:block;margin:16px 0}.adaptation-module .combo-probing{width:100%;height:205px;object-fit:contain;display:block;margin:12px 0}
+.adaptation-module:has(.combo-architecture) .adapt-cards,.adaptation-module:has(.combo-probing) .adapt-cards{margin:10px 0}.adaptation-module:has(.combo-architecture) .adapt-cards>div,.adaptation-module:has(.combo-probing) .adapt-cards>div{font-size:16px}.adaptation-module:has(.combo-architecture) .adapt-cards b,.adaptation-module:has(.combo-probing) .adapt-cards b{font-size:18px;margin-bottom:4px}
+
+.adaptation-module:has([data-mode="rank"]) .katex-display{margin:10px 0}.adaptation-module [data-mode="rank"] svg{height:160px}.adaptation-module .combo-architecture{height:220px;margin:10px 0}.adaptation-module .adapt-mechanics svg.results{height:225px}
+
+.adaptation-module .adapt-figure-labels{display:flex;justify-content:center;gap:50px;color:#334155;font-size:15px;margin:0 0 10px}
+
+.adaptation-module .adapt-original{margin:0}

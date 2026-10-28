@@ -191,14 +191,14 @@ src: ./sections/07-interaction-outcomes.md
 layout: section
 class: course-divider
 storyboard: D08
-section: Key considerations to remember
+section: Introduction to adaptation and evaluation
 divider: true
-dividerFor: S79
+dividerFor: A01
 ---
 
 <div class="course-divider-label">Section 08</div>
 
-# Key considerations to remember
+# Model adaptation
 
 <div class="course-divider-colors" aria-hidden="true"><span /><span /><span /><span /></div>
 

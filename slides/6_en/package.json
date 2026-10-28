@@ -5,11 +5,14 @@
   "scripts": {
     "dev": "slidev slides.md --open",
     "build": "slidev build slides.md",
-    "export": "node scripts/export.mjs && node tests/pdf.mjs",
+    "export": "node scripts/export.mjs && node tests/french-source.mjs --pdf && node tests/adaptation.mjs --pdf",
     "check": "node tests/check.mjs",
     "check:browser": "node tests/browser.mjs",
     "test:math": "node --test tests/training-step.test.mjs tests/representation-scene.test.mjs tests/matching.test.mjs tests/prediction.test.mjs tests/geometry.test.mjs tests/correspondence.test.mjs tests/interaction.test.mjs tests/evaluation.test.mjs",
-    "check:pdf": "node tests/pdf.mjs"
+    "check:pdf": "node tests/french-source.mjs --pdf && node tests/adaptation.mjs --pdf",
+    "check:adaptation": "node tests/adaptation.mjs",
+    "check:adaptation-pdf": "node tests/adaptation.mjs --pdf",
+    "check:french-source": "node tests/french-source.mjs"
   },
   "dependencies": {
     "@slidev/cli": "52.20.1",

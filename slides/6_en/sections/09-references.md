@@ -33,3 +33,13 @@ class: ssl-slide
 <ReferenceList slide="R03" />
 
 
+
+---
+storyboard: R04
+section: References
+class: ssl-slide
+---
+
+# References: adaptation and feature fusion
+
+<ReferenceList slide="R04" />

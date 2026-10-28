@@ -144,6 +144,7 @@ disabled: true
 storyboard: S76
 class: ssl-slide
 clicks: 2
+disabled: true
 ---
 
 # ActAIM as an interaction-learning example
