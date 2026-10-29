@@ -1,0 +1,25 @@
+{
+  "name": "inf8422-cours7-incertitude",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev cours_incertitude.md --port 3078",
+    "build": "slidev build cours_incertitude.md",
+    "export": "slidev export cours_incertitude.md",
+    "dev:en": "npm --prefix ../7_en run dev",
+    "build:en": "npm --prefix ../7_en run build",
+    "export:en": "npm --prefix ../7_en run export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.20.1",
+    "@slidev/theme-default": "latest"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.53.0"
+  },
+  "overrides": {
+    "@shikijs/vitepress-twoslash": {
+      "floating-vue": "5.2.2"
+    }
+  }
+}

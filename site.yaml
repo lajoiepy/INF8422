@@ -49,3 +49,6 @@ topics:
   - title: { fr: "Apprentissage auto-supervisé pour la perception robotique", en: "Apprentissage auto-supervisé pour la perception robotique" }
     deck: { fr: "6", en: "6_en" }
     pdf: { fr: "6.pdf", en: "6_en.pdf" }
+  - title: { fr: "Perception et Incertitude", en: "Robotic Perception and Uncertainty" }
+    deck: { fr: "7", en: "7_en" }
+    pdf: { fr: "7.pdf", en: "7_en.pdf" }
